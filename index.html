@@ -308,7 +308,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
 .early-results{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:5px 14px;
+    gap:8px 14px;
 }
 
 .early-result{
@@ -316,7 +316,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
     font-size:15px;
     line-height:1.45;
     text-align:center;
-    padding:1px 0;
+    padding:3px 0;
 }
 
 .early-result span{
@@ -332,17 +332,21 @@ th:nth-child(5),td:nth-child(5){width:25%}
     align-items:center;
     justify-content:center;
     line-height:1.2;
-    padding:0;
+    padding:2px 0;
 }
 
 .early-result.stacked .result-label{
     color:#aaa;
     font-size:14px;
-    margin-bottom:2px;
+    margin-bottom:3px;
 }
 
 .early-result.stacked span{
     font-size:16px;
+}
+
+.early-result.full-width{
+    grid-column:1 / -1;
 }
 
 
@@ -510,18 +514,18 @@ th:nth-child(5),td:nth-child(5){width:25%}
     }
 
     .early-grid{
-        margin-top:12px;
-        padding-top:10px;
+        margin-top:14px;
+        padding-top:11px;
     }
 
     .early-results{
-        gap:4px 10px;
+        gap:6px 10px;
     }
 
     .early-result{
         font-size:13px;
-        line-height:1.35;
-        padding:1px 0;
+        line-height:1.4;
+        padding:2px 0;
     }
 
     .early-result.stacked .result-label{
@@ -826,6 +830,31 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
         <div class="early-results">
 
+            <!-- 1 -->
+            <div class="early-result stacked">
+
+                <div class="result-label">
+                    أصل القرض
+                </div>
+
+                <span id="originalPrincipal">-</span>
+
+            </div>
+
+
+            <!-- 2 -->
+            <div class="early-result stacked">
+
+                <div class="result-label">
+                    المسدد من أصل القرض
+                </div>
+
+                <span id="principalPaid">-</span>
+
+            </div>
+
+
+            <!-- 3 -->
             <div class="early-result stacked">
 
                 <div class="result-label">
@@ -837,38 +866,38 @@ th:nth-child(5),td:nth-child(5){width:25%}
             </div>
 
 
-            <div class="early-result stacked">
-
-                <div class="result-label">
-                    الفائدة المستقبلية
-                </div>
-
-                <span id="futureInterest">-</span>
-
-            </div>
-
-
+            <!-- 4 -->
             <div class="early-result">
                 رسوم السداد المبكر:
                 <span id="earlyFeeValue">-</span>
             </div>
 
 
+            <!-- 5 -->
             <div class="early-result">
                 مبلغ الإغلاق:
                 <span id="closingAmount">-</span>
             </div>
 
 
+            <!-- 6 -->
             <div class="early-result">
-                التوفير المتوقع:
-                <span id="expectedSaving">-</span>
+                الفائدة المستقبلية:
+                <span id="futureInterest">-</span>
             </div>
 
 
+            <!-- 7 -->
             <div class="early-result">
-                تكلفة القرض الكلية:
-                <span id="totalLoanCost">-</span>
+                تكلفة التمويل الفعلية:
+                <span id="actualFinancingCost">-</span>
+            </div>
+
+
+            <!-- 8 -->
+            <div class="early-result full-width">
+                التوفير المتوقع:
+                <span id="expectedSaving">-</span>
             </div>
 
         </div>
@@ -1383,12 +1412,14 @@ function showEarly(){
 
 
     [
+        "originalPrincipal",
+        "principalPaid",
         "remainingPrincipal",
-        "futureInterest",
         "earlyFeeValue",
         "closingAmount",
-        "expectedSaving",
-        "totalLoanCost"
+        "futureInterest",
+        "actualFinancingCost",
+        "expectedSaving"
     ].forEach(id=>{
 
         document
@@ -1519,13 +1550,35 @@ function calculateEarly(){
         fee;
 
 
+    /* المبلغ المسدد من أصل القرض فقط */
+
+    const principalPaid=
+        Math.max(
+            0,
+            loan.p-balance
+        );
+
+
+    /* تكلفة التمويل الفعلية */
+
+    const actualFinancingCost=
+        Math.max(
+            0,
+            totalLoanCost-loan.p
+        );
+
+
+    document
+    .getElementById("originalPrincipal")
+    .textContent=fmt(loan.p);
+
+    document
+    .getElementById("principalPaid")
+    .textContent=fmt(principalPaid);
+
     document
     .getElementById("remainingPrincipal")
     .textContent=fmt(balance);
-
-    document
-    .getElementById("futureInterest")
-    .textContent=fmt(futureInterest);
 
     document
     .getElementById("earlyFeeValue")
@@ -1536,12 +1589,16 @@ function calculateEarly(){
     .textContent=fmt(closing);
 
     document
-    .getElementById("expectedSaving")
-    .textContent=fmt(saving);
+    .getElementById("futureInterest")
+    .textContent=fmt(futureInterest);
 
     document
-    .getElementById("totalLoanCost")
-    .textContent=fmt(totalLoanCost);
+    .getElementById("actualFinancingCost")
+    .textContent=fmt(actualFinancingCost);
+
+    document
+    .getElementById("expectedSaving")
+    .textContent=fmt(saving);
 
 }
 
