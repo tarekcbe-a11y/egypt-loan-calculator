@@ -166,6 +166,23 @@ button.outline{
 
 
 /* =========================
+   زر إدخال جديد
+========================= */
+
+.new-entry-button{
+    background:#b00000;
+    border-color:#b00000;
+    color:#fff;
+    margin-top:10px;
+}
+
+.new-entry-button:active{
+    background:#8f0000;
+    border-color:#8f0000;
+}
+
+
+/* =========================
    زر حساب السداد المبكر
 ========================= */
 
@@ -497,6 +514,10 @@ th:nth-child(5),td:nth-child(5){width:25%}
         font-size:18px;
     }
 
+    .new-entry-button{
+        margin-top:9px;
+    }
+
     .early-calc-button{
         min-height:72px;
         border-radius:22px;
@@ -689,6 +710,16 @@ th:nth-child(5),td:nth-child(5){width:25%}
         احسب القرض
     </button>
 
+
+    <!-- زر إدخال جديد -->
+
+    <button
+        class="new-entry-button"
+        onclick="newEntry()">
+        إدخال جديد
+    </button>
+
+
     <div class="home-footer">
 
         <div class="developer-bottom">
@@ -830,7 +861,6 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
         <div class="early-results">
 
-            <!-- 1 -->
             <div class="early-result stacked">
 
                 <div class="result-label">
@@ -842,7 +872,6 @@ th:nth-child(5),td:nth-child(5){width:25%}
             </div>
 
 
-            <!-- 2 -->
             <div class="early-result stacked">
 
                 <div class="result-label">
@@ -854,7 +883,6 @@ th:nth-child(5),td:nth-child(5){width:25%}
             </div>
 
 
-            <!-- 3 -->
             <div class="early-result stacked">
 
                 <div class="result-label">
@@ -866,35 +894,30 @@ th:nth-child(5),td:nth-child(5){width:25%}
             </div>
 
 
-            <!-- 4 -->
             <div class="early-result">
                 رسوم السداد المبكر:
                 <span id="earlyFeeValue">-</span>
             </div>
 
 
-            <!-- 5 -->
             <div class="early-result">
                 مبلغ الإغلاق:
                 <span id="closingAmount">-</span>
             </div>
 
 
-            <!-- 6 -->
             <div class="early-result">
                 الفائدة المستقبلية:
                 <span id="futureInterest">-</span>
             </div>
 
 
-            <!-- 7 -->
             <div class="early-result">
                 تكلفة التمويل الفعلية:
                 <span id="actualFinancingCost">-</span>
             </div>
 
 
-            <!-- 8 -->
             <div class="early-result full-width">
                 التوفير المتوقع:
                 <span id="expectedSaving">-</span>
@@ -1264,6 +1287,72 @@ function backToInput(){
 
 
 /* =========================
+   إدخال جديد - مسح كل البيانات
+========================= */
+
+function newEntry(){
+
+    loan={};
+
+
+    [
+        "principal",
+        "interest",
+        "years",
+        "paidInstallments",
+        "earlyFee"
+    ].forEach(id=>{
+
+        document
+        .getElementById(id)
+        .value="";
+
+    });
+
+
+    [
+        "monthlyPayment",
+        "totalPaid",
+        "totalInterest",
+        "installments",
+        "originalPrincipal",
+        "principalPaid",
+        "remainingPrincipal",
+        "earlyFeeValue",
+        "closingAmount",
+        "futureInterest",
+        "actualFinancingCost",
+        "expectedSaving"
+    ].forEach(id=>{
+
+        document
+        .getElementById(id)
+        .textContent="-";
+
+    });
+
+
+    document
+    .getElementById("schedule")
+    .innerHTML="";
+
+
+    hideAll();
+
+    document
+    .getElementById("inputPage")
+    .classList
+    .remove("hidden");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
    الخصوصية
 ========================= */
 
@@ -1402,33 +1491,6 @@ function showSchedule(){
 
 function showEarly(){
 
-    document
-    .getElementById("paidInstallments")
-    .value="";
-
-    document
-    .getElementById("earlyFee")
-    .value="";
-
-
-    [
-        "originalPrincipal",
-        "principalPaid",
-        "remainingPrincipal",
-        "earlyFeeValue",
-        "closingAmount",
-        "futureInterest",
-        "actualFinancingCost",
-        "expectedSaving"
-    ].forEach(id=>{
-
-        document
-        .getElementById(id)
-        .textContent="-";
-
-    });
-
-
     hideAll();
 
     document
@@ -1536,13 +1598,9 @@ function calculateEarly(){
         );
 
 
-    /* إجمالي ما تم سداده حتى الآن */
-
     const paidAmount=
         loan.payment*paid;
 
-
-    /* تكلفة القرض الكلية عند السداد المبكر */
 
     const totalLoanCost=
         paidAmount+
@@ -1550,16 +1608,12 @@ function calculateEarly(){
         fee;
 
 
-    /* المبلغ المسدد من أصل القرض فقط */
-
     const principalPaid=
         Math.max(
             0,
             loan.p-balance
         );
 
-
-    /* تكلفة التمويل الفعلية */
 
     const actualFinancingCost=
         Math.max(
