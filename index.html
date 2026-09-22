@@ -34,6 +34,7 @@ body{
     padding:14px;
     display:flex;
     flex-direction:column;
+    overscroll-behavior:none;
 }
 
 .container{
@@ -710,15 +711,11 @@ th:nth-child(5),td:nth-child(5){width:25%}
         احسب القرض
     </button>
 
-
-    <!-- زر إدخال جديد -->
-
     <button
         class="new-entry-button"
         onclick="newEntry()">
         إدخال جديد
     </button>
-
 
     <div class="home-footer">
 
@@ -1615,10 +1612,13 @@ function calculateEarly(){
         );
 
 
+    /* تكلفة التمويل الفعلية =
+       الفائدة المدفوعة فعليًا فقط */
+
     const actualFinancingCost=
         Math.max(
             0,
-            totalLoanCost-loan.p
+            paidAmount-principalPaid
         );
 
 
