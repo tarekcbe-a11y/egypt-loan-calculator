@@ -21,6 +21,8 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 html,body{
     margin:0;
     padding:0;
+    width:100%;
+    min-height:100%;
     background:#050505;
     color:#fff;
     font-family:Arial,Tahoma,sans-serif;
@@ -30,12 +32,14 @@ html,body{
 body{
     min-height:100vh;
     padding:14px;
+    display:flex;
+    flex-direction:column;
 }
 
 .container{
     width:100%;
     max-width:800px;
-    margin:0 auto;
+    margin:auto;
     background:#0b0b0b;
     border:2px solid #d4af37;
     border-radius:28px;
@@ -46,6 +50,7 @@ body{
 .hidden{
     display:none!important;
 }
+
 
 /* =========================
    العنوان
@@ -84,6 +89,7 @@ body{
     margin:0 0 18px;
 }
 
+
 /* =========================
    المدخلات
 ========================= */
@@ -115,6 +121,7 @@ input:focus{
     color:#fff;
 }
 
+
 /* =========================
    السداد المبكر
 ========================= */
@@ -129,6 +136,7 @@ input:focus{
     font-size:18px;
     font-weight:400;
 }
+
 
 /* =========================
    الأزرار
@@ -156,6 +164,7 @@ button.outline{
     color:#d4af37;
 }
 
+
 /* =========================
    زر حساب السداد المبكر
 ========================= */
@@ -168,6 +177,7 @@ button.outline{
     font-size:24px;
     font-weight:900;
 }
+
 
 /* =========================
    النتائج الرئيسية
@@ -217,6 +227,7 @@ button.outline{
     display:block;
 }
 
+
 /* =========================
    الأزرار السفلية
 ========================= */
@@ -228,6 +239,7 @@ button.outline{
     display:grid;
     gap:10px;
 }
+
 
 /* =========================
    جدول الأقساط
@@ -282,6 +294,7 @@ th:nth-child(3),td:nth-child(3){width:20%}
 th:nth-child(4),td:nth-child(4){width:25%}
 th:nth-child(5),td:nth-child(5){width:25%}
 
+
 /* =========================
    نتائج السداد المبكر
 ========================= */
@@ -332,6 +345,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
     font-size:16px;
 }
 
+
 /* =========================
    أسفل الصفحة الرئيسية
 ========================= */
@@ -375,9 +389,10 @@ th:nth-child(5),td:nth-child(5){width:25%}
     color:#555;
 }
 
-/* ==================================================
+
+/* =========================
    صفحات الخصوصية والدليل
-================================================== */
+========================= */
 
 .info-page{
     min-height:520px;
@@ -389,43 +404,35 @@ th:nth-child(5),td:nth-child(5){width:25%}
 .info-page .panel-title{
     width:100%;
     text-align:center;
-    color:#d4af37 !important;
+    color:#d4af37!important;
     margin-bottom:18px;
 }
 
-/* النص يستغل كامل عرض الصفحة */
-
 .info-text{
-    width:100% !important;
-    max-width:100% !important;
-    align-self:stretch !important;
-
-    color:#c8c8c8 !important;
+    width:100%!important;
+    max-width:100%!important;
+    align-self:stretch!important;
+    color:#c8c8c8!important;
     font-size:17px;
     line-height:1.75;
-
-    text-align:right !important;
+    text-align:right!important;
     direction:rtl;
-
     margin:0;
     padding:0;
 }
 
 .info-text p{
-    width:100% !important;
-    max-width:100% !important;
-
-    color:#c8c8c8 !important;
-
+    width:100%!important;
+    max-width:100%!important;
+    color:#c8c8c8!important;
     margin:0 0 13px;
     padding:0;
-
-    text-align:right !important;
+    text-align:right!important;
     direction:rtl;
 }
 
 .info-text strong{
-    color:#d4af37 !important;
+    color:#d4af37!important;
     font-weight:700;
 }
 
@@ -433,6 +440,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
     margin-top:auto;
     width:100%;
 }
+
 
 /* =========================
    الموبايل
@@ -445,8 +453,10 @@ th:nth-child(5),td:nth-child(5){width:25%}
     }
 
     .container{
+        width:100%;
         border-radius:28px;
         padding:20px 20px 22px;
+        margin:auto;
     }
 
     .group-name{
@@ -581,8 +591,6 @@ th:nth-child(5),td:nth-child(5){width:25%}
         font-size:13px;
     }
 
-    /* النص في الصفحتين بعرض الإطار بالكامل */
-
     .info-page{
         min-height:500px;
         width:100%;
@@ -595,38 +603,35 @@ th:nth-child(5),td:nth-child(5){width:25%}
     }
 
     .info-text{
-        width:100% !important;
-        max-width:100% !important;
-        align-self:stretch !important;
-
+        width:100%!important;
+        max-width:100%!important;
+        align-self:stretch!important;
         font-size:15px;
         line-height:1.7;
-
-        color:#c8c8c8 !important;
-        text-align:right !important;
+        color:#c8c8c8!important;
+        text-align:right!important;
     }
 
     .info-text p{
-        width:100% !important;
-        max-width:100% !important;
-
-        color:#c8c8c8 !important;
-        text-align:right !important;
+        width:100%!important;
+        max-width:100%!important;
+        color:#c8c8c8!important;
+        text-align:right!important;
     }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-<!-- ==================================================
+
+<!-- =========================
      1 - الصفحة الرئيسية
-================================================== -->
+========================= -->
 
 <section id="inputPage">
 
@@ -704,9 +709,10 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
 </section>
 
-<!-- ==================================================
+
+<!-- =========================
      2 - النتائج
-================================================== -->
+========================= -->
 
 <section id="resultsPage" class="hidden">
 
@@ -756,9 +762,10 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
 </section>
 
-<!-- ==================================================
+
+<!-- =========================
      3 - جدول الأقساط
-================================================== -->
+========================= -->
 
 <section id="schedulePage" class="hidden">
 
@@ -773,18 +780,17 @@ th:nth-child(5),td:nth-child(5){width:25%}
         <button
             class="outline"
             onclick="showResults()">
-
             ← العودة إلى نتائج القرض
-
         </button>
 
     </div>
 
 </section>
 
-<!-- ==================================================
+
+<!-- =========================
      4 - السداد المبكر
-================================================== -->
+========================= -->
 
 <section id="earlyPage" class="hidden">
 
@@ -813,9 +819,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
     <button
         class="early-calc-button"
         onclick="calculateEarly()">
-
         احسب السداد المبكر
-
     </button>
 
     <div class="early-grid">
@@ -828,11 +832,10 @@ th:nth-child(5),td:nth-child(5){width:25%}
                     أصل القرض المتبقي
                 </div>
 
-                <span id="remainingPrincipal">
-                    -
-                </span>
+                <span id="remainingPrincipal">-</span>
 
             </div>
+
 
             <div class="early-result stacked">
 
@@ -840,73 +843,55 @@ th:nth-child(5),td:nth-child(5){width:25%}
                     الفائدة المستقبلية
                 </div>
 
-                <span id="futureInterest">
-                    -
-                </span>
+                <span id="futureInterest">-</span>
 
             </div>
 
-            <div class="early-result">
 
+            <div class="early-result">
                 رسوم السداد المبكر:
-
-                <span id="earlyFeeValue">
-                    -
-                </span>
-
+                <span id="earlyFeeValue">-</span>
             </div>
 
-            <div class="early-result">
 
+            <div class="early-result">
                 مبلغ الإغلاق:
-
-                <span id="closingAmount">
-                    -
-                </span>
-
+                <span id="closingAmount">-</span>
             </div>
 
-            <div class="early-result">
 
+            <div class="early-result">
                 التوفير المتوقع:
-
-                <span id="expectedSaving">
-                    -
-                </span>
-
+                <span id="expectedSaving">-</span>
             </div>
 
+
             <div class="early-result">
-
-                تكلفة الاستمرار:
-
-                <span id="continuationCost">
-                    -
-                </span>
-
+                تكلفة القرض الكلية:
+                <span id="totalLoanCost">-</span>
             </div>
 
         </div>
 
     </div>
 
+
     <div class="actions">
 
         <button
             class="outline"
             onclick="showResults()">
-
             ← العودة إلى نتائج القرض
-
         </button>
 
     </div>
 
 </section>
 
-<!-- ==================================================
+
+<!-- =========================
      5 - سياسة الخصوصية
-================================================== -->
+========================= -->
 
 <section
     id="privacyPage"
@@ -947,9 +932,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
             <button
                 class="outline"
                 onclick="backToInput()">
-
                 ← العودة إلى الصفحة الرئيسية
-
             </button>
 
         </div>
@@ -958,9 +941,10 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
 </section>
 
-<!-- ==================================================
-     6 - دليل حاسبة القروض
-================================================== -->
+
+<!-- =========================
+     6 - دليل الحاسبة
+========================= -->
 
 <section
     id="guidePage"
@@ -1005,9 +989,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
             <button
                 class="outline"
                 onclick="backToInput()">
-
                 ← العودة إلى الصفحة الرئيسية
-
             </button>
 
         </div>
@@ -1016,11 +998,14 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
 </section>
 
+
 </div>
+
 
 <script>
 
-let loan = {};
+let loan={};
+
 
 /* =========================
    تنسيق الأرقام
@@ -1028,8 +1013,8 @@ let loan = {};
 
 function formatThousands(el){
 
-    const raw =
-        String(el.value || "")
+    const raw=
+        String(el.value||"")
         .replace(/[^0-9٠-٩]/g,"");
 
     if(!raw){
@@ -1037,15 +1022,16 @@ function formatThousands(el){
         return;
     }
 
-    const western =
+    const western=
         raw.replace(
             /[٠-٩]/g,
             d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)
         );
 
-    el.value =
+    el.value=
         Number(western).toLocaleString("en-US");
 }
+
 
 /* =========================
    توحيد الأرقام
@@ -1053,26 +1039,24 @@ function formatThousands(el){
 
 function normalizeNumber(value){
 
-    if(value===undefined || value===null)
+    if(value===undefined||value===null)
         return "";
 
     return String(value)
-
         .replace(
             /[٠-٩]/g,
             d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)
         )
-
         .replace(
             /[۰-۹]/g,
             d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d)
         )
-
         .replace(/٬/g,"")
         .replace(/,/g,"")
         .replace(/[٫،]/g,".")
         .replace(/[^\d.-]/g,"");
 }
+
 
 function num(id){
 
@@ -1083,6 +1067,7 @@ function num(id){
     );
 
 }
+
 
 function fmt(n){
 
@@ -1095,6 +1080,7 @@ function fmt(n){
     );
 
 }
+
 
 /* =========================
    إخفاء الصفحات
@@ -1120,6 +1106,7 @@ function hideAll(){
 
 }
 
+
 /* =========================
    حساب القرض
 ========================= */
@@ -1131,8 +1118,8 @@ function calculateLoan(){
     const years=num("years");
 
     if(
-        !(p>0) ||
-        !(annual>=0) ||
+        !(p>0)||
+        !(annual>=0)||
         !(years>0)
     ){
 
@@ -1171,6 +1158,7 @@ function calculateLoan(){
         totalInterest
     };
 
+
     document
     .getElementById("monthlyPayment")
     .textContent=fmt(payment);
@@ -1188,6 +1176,7 @@ function calculateLoan(){
     .textContent=
         months.toLocaleString("en-US");
 
+
     hideAll();
 
     document
@@ -1201,6 +1190,7 @@ function calculateLoan(){
     });
 
 }
+
 
 /* =========================
    النتائج
@@ -1222,6 +1212,7 @@ function showResults(){
 
 }
 
+
 /* =========================
    الرئيسية
 ========================= */
@@ -1241,6 +1232,7 @@ function backToInput(){
     });
 
 }
+
 
 /* =========================
    الخصوصية
@@ -1262,6 +1254,7 @@ function showPrivacy(){
 
 }
 
+
 /* =========================
    الدليل
 ========================= */
@@ -1282,6 +1275,7 @@ function showGuide(){
 
 }
 
+
 /* =========================
    جدول الأقساط
 ========================= */
@@ -1291,11 +1285,8 @@ function showSchedule(){
     let balance=loan.p;
 
     let html=`
-
         <table>
-
             <thead>
-
                 <tr>
                     <th>م</th>
                     <th>القسط</th>
@@ -1303,12 +1294,10 @@ function showSchedule(){
                     <th>أصل القرض</th>
                     <th>الرصيد المتبقي</th>
                 </tr>
-
             </thead>
-
             <tbody>
-
     `;
+
 
     for(
         let i=1;
@@ -1330,47 +1319,38 @@ function showSchedule(){
                 balance-principalPaid
             );
 
+
         html+=`
-
             <tr>
-
                 <td>${i}</td>
-
-                <td>
-                    ${
-                        fmt(
-                            i===loan.months
-                            ?
-                            principalPaid+interest
-                            :
-                            loan.payment
-                        )
-                    }
-                </td>
-
+                <td>${
+                    fmt(
+                        i===loan.months
+                        ?
+                        principalPaid+interest
+                        :
+                        loan.payment
+                    )
+                }</td>
                 <td>${fmt(interest)}</td>
-
                 <td>${fmt(principalPaid)}</td>
-
                 <td>${fmt(balance)}</td>
-
             </tr>
-
         `;
 
     }
 
+
     html+=`
-
             </tbody>
-
         </table>
-
     `;
+
 
     document
     .getElementById("schedule")
     .innerHTML=html;
+
 
     hideAll();
 
@@ -1386,6 +1366,7 @@ function showSchedule(){
 
 }
 
+
 /* =========================
    السداد المبكر
 ========================= */
@@ -1400,13 +1381,14 @@ function showEarly(){
     .getElementById("earlyFee")
     .value="";
 
+
     [
         "remainingPrincipal",
         "futureInterest",
         "earlyFeeValue",
         "closingAmount",
         "expectedSaving",
-        "continuationCost"
+        "totalLoanCost"
     ].forEach(id=>{
 
         document
@@ -1414,6 +1396,7 @@ function showEarly(){
         .textContent="-";
 
     });
+
 
     hideAll();
 
@@ -1428,6 +1411,7 @@ function showEarly(){
     });
 
 }
+
 
 /* =========================
    حساب السداد المبكر
@@ -1446,10 +1430,11 @@ function calculateEarly(){
 
     const feeRate=num("earlyFee")/100;
 
+
     if(
-        !Number.isInteger(paid) ||
-        paid<0 ||
-        paid>=loan.months ||
+        !Number.isInteger(paid)||
+        paid<0||
+        paid>=loan.months||
         !(feeRate>=0)
     ){
 
@@ -1460,7 +1445,9 @@ function calculateEarly(){
         return;
     }
 
+
     let balance;
+
 
     if(loan.r===0){
 
@@ -1489,7 +1476,9 @@ function calculateEarly(){
 
     }
 
+
     balance=Math.max(0,balance);
+
 
     const remainingPayments=
         loan.months-paid;
@@ -1515,6 +1504,21 @@ function calculateEarly(){
             futureInterest-fee
         );
 
+
+    /* إجمالي ما تم سداده حتى الآن */
+
+    const paidAmount=
+        loan.payment*paid;
+
+
+    /* تكلفة القرض الكلية عند السداد المبكر */
+
+    const totalLoanCost=
+        paidAmount+
+        balance+
+        fee;
+
+
     document
     .getElementById("remainingPrincipal")
     .textContent=fmt(balance);
@@ -1536,10 +1540,11 @@ function calculateEarly(){
     .textContent=fmt(saving);
 
     document
-    .getElementById("continuationCost")
-    .textContent=fmt(futureInterest);
+    .getElementById("totalLoanCost")
+    .textContent=fmt(totalLoanCost);
 
 }
+
 
 /* =========================
    منع التكبير
