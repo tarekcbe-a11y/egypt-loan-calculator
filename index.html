@@ -1,804 +1,222 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-<meta name="theme-color" content="#050505">
-
-<title>حاسبة القروض</title>
-
-<style>
-
-*{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
-}
-
-html,body{
-    margin:0;
-    padding:0;
-    width:100%;
-    height:100vh;
-    overflow:hidden;
-    background:#050505;
-    color:#fff;
-    font-family:Arial,Tahoma,sans-serif;
-    direction:rtl;
-    touch-action:none;
-}
-
-body{
-    padding:10px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    overscroll-behavior:none;
-}
-
-.container{
-    width:100%;
-    max-width:800px;
-    max-height:100vh;
-    background:#0b0b0b;
-    border:2px solid #d4af37;
-    border-radius:24px;
-    padding:14px 16px;
-    box-shadow:0 12px 35px rgba(0,0,0,.45);
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-}
-
-.hidden{
-    display:none!important;
-}
-
-
-/* =========================
-   العنوان
-========================= */
-
-.header{
-    text-align:center;
-    margin-bottom:8px;
-}
-
-.group-name{
-    color:#fff;
-    font-size:21px;
-    font-weight:800;
-    margin:0 0 2px;
-}
-
-.subtitle{
-    color:#d4af37;
-    font-size:18px;
-    font-weight:700;
-    margin:0;
-}
-
-.panel-title{
-    color:#d4af37;
-    text-align:center;
-    font-size:28px;
-    font-weight:800;
-    margin:0 0 10px;
-}
-
-
-/* =========================
-   المدخلات
-========================= */
-
-label{
-    display:block;
-    color:#ddd;
-    font-size:16px;
-    font-weight:600;
-    margin:0 0 4px;
-}
-
-input{
-    width:100%;
-    height:44px;
-    padding:4px 12px;
-    border:2px solid #555;
-    border-radius:14px;
-    background:#181818;
-    color:#bbb;
-    font-size:19px;
-    outline:none;
-    text-align:right;
-    margin:0 0 8px;
-}
-
-input:focus{
-    border-color:#d4af37;
-    color:#fff;
-}
-
-
-/* =========================
-   السداد المبكر
-========================= */
-
-.early-input{
-    margin-bottom:8px;
-}
-
-.early-input::placeholder{
-    color:#777;
-    opacity:1;
-    font-size:15px;
-    font-weight:400;
-}
-
-
-/* =========================
-   الأزرار
-========================= */
-
-button{
-    width:100%;
-    min-height:44px;
-    border:2px solid #d4af37;
-    border-radius:14px;
-    background:#d4af37;
-    color:#050505;
-    font-size:17px;
-    font-weight:800;
-    cursor:pointer;
-    margin-top:2px;
-}
-
-button:active{
-    transform:scale(.99);
-}
-
-button.outline{
-    background:transparent;
-    color:#d4af37;
-}
-
-
-/* =========================
-   زر إدخال جديد
-========================= */
-
-.new-entry-button{
-    background:#b00000;
-    border-color:#b00000;
-    color:#fff;
-    margin-top:4px;
-}
-
-.new-entry-button:active{
-    background:#8f0000;
-    border-color:#8f0000;
-}
-
-
-/* =========================
-   زر حساب السداد المبكر
-========================= */
-
-.early-calc-button{
-    min-height:50px;
-    margin-top:4px;
-    margin-bottom:2px;
-    border-radius:16px;
-    font-size:19px;
-    font-weight:900;
-}
-
-
-/* =========================
-   النتائج الرئيسية
-========================= */
-
-.results-title{
-    color:#d4af37;
-    text-align:center;
-    font-size:30px;
-    font-weight:800;
-    margin:0 0 8px;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:6px;
-}
-
-.card{
-    background:#151515;
-    border:2px solid #303030;
-    border-radius:14px;
-    padding:8px 6px;
-    text-align:center;
-    min-height:82px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.card .label{
-    color:#aaa;
-    font-size:15px;
-    margin-bottom:3px;
-}
-
-.card .value{
-    color:#d4af37;
-    font-size:19px;
-    font-weight:800;
-    direction:ltr;
-    background:transparent!important;
-    padding:0!important;
-    box-shadow:none!important;
-    text-shadow:none!important;
-    display:block;
-}
-
-
-/* =========================
-   الأزرار السفلية
-========================= */
-
-.actions{
-    border-top:1px solid #333;
-    margin-top:10px;
-    padding-top:10px;
-    display:grid;
-    gap:6px;
-}
-
-
-/* =========================
-   جدول الأقساط
-========================= */
-
-.schedule-wrap{
-    overflow-y:auto;
-    overflow-x:hidden;
-    margin-top:10px;
-    border-radius:12px;
-    max-height:48vh;
-    background:#111;
-    border:1px solid #333;
-    -webkit-overflow-scrolling:touch;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    table-layout:fixed;
-    background:#111;
-    color:#eee;
-}
-
-th,td{
-    border:1px solid #333;
-    padding:6px 2px;
-    text-align:center;
-    white-space:nowrap;
-    overflow:hidden;
-}
-
-th{
-    background:#0a1f44;
-    color:#d4af37;
-    position:sticky;
-    top:0;
-    z-index:5;
-    font-size:12px;
-}
-
-td{
-    font-size:11px;
-}
-
-th:nth-child(1),td:nth-child(1){width:8%}
-th:nth-child(2),td:nth-child(2){width:22%}
-th:nth-child(3),td:nth-child(3){width:20%}
-th:nth-child(4),td:nth-child(4){width:25%}
-th:nth-child(5),td:nth-child(5){width:25%}
-
-
-/* =========================
-   نتائج السداد المبكر
-========================= */
-
-.early-grid{
-    margin-top:8px;
-    padding-top:6px;
-    border-top:1px solid #333;
-}
-
-.early-results{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:5px 8px;
-}
-
-.early-result{
-    color:#aaa;
-    font-size:12px;
-    line-height:1.2;
-    text-align:center;
-    padding:2px 0;
-}
-
-.early-result span{
-    color:#d4af37;
-    font-weight:800;
-    direction:ltr;
-    display:inline-block;
-}
-
-.early-result.stacked{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    line-height:1.1;
-}
-
-.early-result.stacked .result-label{
-    color:#aaa;
-    font-size:11px;
-    margin-bottom:2px;
-}
-
-.early-result.stacked span{
-    font-size:13px;
-}
-
-.early-result.full-width{
-    grid-column:1 / -1;
-}
-
-
-/* =========================
-   أسفل الصفحة الرئيسية
-========================= */
-
-.home-footer{
-    text-align:center;
-    margin-top:10px;
-    padding-top:8px;
-    border-top:1px solid #333;
-}
-
-.home-footer .developer-bottom{
-    color:#777;
-    font-size:12px;
-    margin-bottom:4px;
-}
-
-.footer-links{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
-    color:#d4af37;
-    font-size:12px;
-}
-
-.footer-links button{
-    width:auto;
-    min-height:auto;
-    border:0;
-    background:none;
-    color:#d4af37;
-    font-size:12px;
-    font-weight:600;
-    padding:0;
-    margin:0;
-    border-radius:0;
-}
-
-.footer-links .separator{
-    color:#555;
-}
-
-
-/* =========================
-   صفحات الخصوصية والدليل
-========================= */
-
-.info-page{
-    display:flex;
-    flex-direction:column;
-    width:100%;
-}
-
-.info-page .panel-title{
-    width:100%;
-    text-align:center;
-    color:#d4af37!important;
-    margin-bottom:10px;
-}
-
-.info-text{
-    width:100%!important;
-    max-width:100%!important;
-    color:#c8c8c8!important;
-    font-size:14px;
-    line-height:1.5;
-    text-align:right!important;
-    direction:rtl;
-    margin:0;
-    padding:0;
-    overflow-y:auto;
-    max-height:52vh;
-}
-
-.info-text p{
-    width:100%!important;
-    max-width:100%!important;
-    color:#c8c8c8!important;
-    margin:0 0 8px;
-    padding:0;
-    text-align:right!important;
-    direction:rtl;
-}
-
-.info-text strong{
-    color:#d4af37!important;
-    font-weight:700;
-}
-
-.info-bottom{
-    margin-top:auto;
-    width:100%;
-}
-
-
-/* =========================
-   مكان إعلانات Google AdMob (مفعل للربط)
-========================= */
-.admob-banner-container {
-    width: 100%;
-    height: 45px;
-    background: #111;
-    border: 1px dashed #444;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #555;
-    font-size: 11px;
-    margin-top: 8px;
-    border-radius: 6px;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة القروض البنكية</title>
+    <!-- استدعاء سكريبت جوجل لإعلانات البنر -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4957378617452523~7270351395" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #111418;
+            --text-color: #e6edf3;
+            --gold-color: #d4af37;
+            --border-color: #2b313b;
+            --btn-red: #8b0000;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--gold-color);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.8);
+            text-align: center;
+        }
+        .header-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        .sub-title {
+            font-size: 16px;
+            color: var(--gold-color);
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            background: #050505;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: right;
+        }
+        input:focus {
+            border-color: var(--gold-color);
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-calc {
+            background-color: var(--gold-color);
+            color: #000;
+        }
+        .btn-reset {
+            background-color: var(--btn-red);
+            color: #fff;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #050505;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: right;
+            display: none;
+        }
+        .result p {
+            margin: 8px 0;
+            font-size: 15px;
+        }
+        .footer-info {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #8b949e;
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+        }
+        .footer-info div {
+            margin: 5px 0;
+        }
+        .footer-info a {
+            color: var(--gold-color);
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .banner-container {
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-
-<!-- =========================
-     1 - الصفحة الرئيسية
-========================= -->
-<section id="inputPage">
-    <div class="header">
-        <div class="group-name">جروب عملاء البنوك المصرية</div>
-        <div class="subtitle">حاسبة القروض</div>
-    </div>
-
-    <label for="principal">قيمة القرض</label>
-    <input id="principal" type="text" inputmode="numeric" autocomplete="off" oninput="formatThousands(this)">
-
-    <label for="interest">نسبة الفائدة السنوية %</label>
-    <input id="interest" type="text" inputmode="decimal" autocomplete="off">
-
-    <label for="years">مدة القرض بالسنوات</label>
-    <input id="years" type="text" inputmode="decimal" autocomplete="off">
-
-    <button onclick="calculateLoan()">احسب القرض</button>
-    <button class="new-entry-button" onclick="newEntry()">إدخال جديد</button>
-
-    <div class="home-footer">
-        <div class="developer-bottom">إعداد أ/ طارق متولى</div>
-        <div class="footer-links">
-            <button onclick="showPrivacy()">سياسة الخصوصية</button>
-            <span class="separator">|</span>
-            <button onclick="showGuide()">دليل حاسبة القروض</button>
+    <div class="container">
+        <div class="header-title">جروب عملاء البنوك المصرية</div>
+        <div class="sub-title">حاسبة القروض البنكية</div>
+        
+        <div class="form-group">
+            <label>قيمة القرض</label>
+            <input type="number" id="loanAmount" placeholder="أدخل مبلغ القرض">
         </div>
-    </div>
-    
-    <!-- مساحة إعلانات Google AdMob -->
-    <div class="admob-banner-container">Google AdMob Banner Space</div>
-</section>
+        
+        <div class="form-group">
+            <label>نسبة الفائدة السنوية %</label>
+            <input type="number" id="interestRate" placeholder="نسبة الفائدة" step="0.01">
+        </div>
+        
+        <div class="form-group">
+            <label>مدة القرض بالسنوات</label>
+            <input type="number" id="loanYears" placeholder="عدد السنوات">
+        </div>
+        
+        <button class="btn-calc" onclick="calculateLoan()">احسب القرض</button>
+        <button class="btn-reset" onclick="resetForm()">إدخال جديد</button>
+        
+        <div class="result" id="resultDiv">
+            <p><strong>قسط الشهر:</strong> <span id="monthlyPayment">0</span> جنيه</p>
+            <p><strong>إجمالي الفوائد:</strong> <span id="totalInterest">0</span> جنيه</p>
+            <p><strong>إجمالي المبلغ المستحق:</strong> <span id="totalPayment">0</span> جنيه</p>
+        </div>
 
-<!-- =========================
-     2 - النتائج
-========================= -->
-<section id="resultsPage" class="hidden">
-    <h2 class="results-title">نتائج القرض</h2>
-    <div class="cards">
-        <div class="card">
-            <div class="label">القسط الشهري</div>
-            <div class="value" id="monthlyPayment">-</div>
+        <div class="footer-info">
+            <div>إعداد أ/ طارق متولى</div>
+            <div>
+                <a href="#">سياسة الخصوصية</a> | <a href="#">دليل حاسبة القروض</a>
+            </div>
         </div>
-        <div class="card">
-            <div class="label">إجمالي المدفوع</div>
-            <div class="value" id="totalPaid">-</div>
-        </div>
-        <div class="card">
-            <div class="label">إجمالي الفائدة</div>
-            <div class="value" id="totalInterest">-</div>
-        </div>
-        <div class="card">
-            <div class="label">عدد الأقساط</div>
-            <div class="value" id="installments">-</div>
+
+        <!-- مكان إعلان البنر المدمج برقم الوحدة الخاص بك -->
+        <div class="banner-container">
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:320px;height:50px"
+                 data-ad-client="ca-app-pub-4957378617452523"
+                 data-ad-slot="4775301562"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
     </div>
 
-    <div class="actions">
-        <button onclick="showSchedule()">جدول الأقساط</button>
-        <button onclick="showEarly()">السداد المبكر</button>
-        <button class="outline" onclick="backToInput()">تعديل بيانات القرض</button>
-    </div>
-</section>
+    <script>
+        function calculateLoan() {
+            const principal = parseFloat(document.getElementById('loanAmount').value);
+            const annualRate = parseFloat(document.getElementById('interestRate').value);
+            const years = parseFloat(document.getElementById('loanYears').value);
 
-<!-- =========================
-     3 - جدول الأقساط
-========================= -->
-<section id="schedulePage" class="hidden">
-    <h2 class="panel-title">جدول الأقساط</h2>
-    <div id="schedule" class="schedule-wrap"></div>
-    <div class="actions">
-        <button class="outline" onclick="showResults()">← العودة إلى نتائج القرض</button>
-    </div>
-</section>
+            if (isNaN(principal) || isNaN(annualRate) || isNaN(years) || principal <= 0 || annualRate < 0 || years <= 0) {
+                alert('الرجاء إدخال بيانات صحيحة وسليمة');
+                return;
+            }
 
-<!-- =========================
-     4 - السداد المبكر
-========================= -->
-<section id="earlyPage" class="hidden">
-    <h2 class="panel-title">السداد المبكر</h2>
-    <input id="paidInstallments" class="early-input" type="text" inputmode="numeric" autocomplete="off" placeholder="عدد الأقساط التي تم سدادها">
-    <input id="earlyFee" class="early-input" type="text" inputmode="decimal" autocomplete="off" placeholder="نسبة رسوم السداد المبكر %">
-    <button class="early-calc-button" onclick="calculateEarly()">احسب السداد المبكر</button>
+            const monthlyRate = (annualRate / 100) / 12;
+            const numberOfPayments = years * 12;
+            
+            let monthlyPayment = 0;
+            if (monthlyRate === 0) {
+                monthlyPayment = principal / numberOfPayments;
+            } else {
+                monthlyPayment = (principal * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / 
+                                 (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+            }
 
-    <div class="early-grid">
-        <div class="early-results">
-            <div class="early-result stacked">
-                <div class="result-label">أصل القرض</div>
-                <span id="originalPrincipal">-</span>
-            </div>
-            <div class="early-result stacked">
-                <div class="result-label">المسدد من أصل القرض</div>
-                <span id="principalPaid">-</span>
-            </div>
-            <div class="early-result stacked">
-                <div class="result-label">أصل القرض المتبقي</div>
-                <span id="remainingPrincipal">-</span>
-            </div>
-            <div class="early-result">
-                رسوم السداد المبكر: <span id="earlyFeeValue">-</span>
-            </div>
-            <div class="early-result">
-                مبلغ الإغلاق: <span id="closingAmount">-</span>
-            </div>
-            <div class="early-result">
-                الفائدة المستقبلية: <span id="futureInterest">-</span>
-            </div>
-            <div class="early-result">
-                تكلفة التمويل الفعلية: <span id="actualFinancingCost">-</span>
-            </div>
-            <div class="early-result full-width">
-                التوفير المتوقع: <span id="expectedSaving">-</span>
-            </div>
-        </div>
-    </div>
+            const totalPayment = monthlyPayment * numberOfPayments;
+            const totalInterest = totalPayment - principal;
 
-    <div class="actions">
-        <button class="outline" onclick="showResults()">← العودة إلى نتائج القرض</button>
-    </div>
-</section>
+            document.getElementById('monthlyPayment').innerText = monthlyPayment.toFixed(2);
+            document.getElementById('totalInterest').innerText = totalInterest.toFixed(2);
+            document.getElementById('totalPayment').innerText = totalPayment.toFixed(2);
+            
+            document.getElementById('resultDiv').style.display = 'block';
+        }
 
-<!-- =========================
-     5 - سياسة الخصوصية
-========================= -->
-<section id="privacyPage" class="hidden info-page">
-    <h2 class="panel-title">سياسة الخصوصية</h2>
-    <div class="info-text">
-        <p>نحترم خصوصيتك ونحرص على حماية بياناتك. صُممت حاسبة القروض كأداة حسابية فقط، ولا تطلب اسمك أو رقم هاتفك أو بريدك الإلكتروني أو أي بيانات شخصية أو بنكية.</p>
-        <p>التطبيق مستقل بذاته ومجهز مستقبلاً لدعم شبكات الإعلانات (مثل Google AdMob) وفقاً لسياسات الخصوصية المعتمدة للمتاجر الرقمية، مع عدم مشاركة أي بيانات حساسة مع جهات خارجية.</p>
-        <p>جميع النتائج تقديرية وتعتمد على البيانات التي يدخلها المستخدم، ولا تمثل عرضًا ائتمانيًا أو قرارًا ماليًا من أي جهة.</p>
-    </div>
-    <div class="info-bottom">
-        <div class="actions">
-            <button class="outline" onclick="backToInput()">← العودة إلى الصفحة الرئيسية</button>
-        </div>
-    </div>
-</section>
-
-<!-- =========================
-     6 - دليل الحاسبة
-========================= -->
-<section id="guidePage" class="hidden info-page">
-    <h2 class="panel-title">دليل حاسبة القروض</h2>
-    <div class="info-text">
-        <p>أدخل قيمة القرض، ثم نسبة الفائدة السنوية، ثم مدة القرض بالسنوات واضغط «احسب القرض» لعرض النتائج.</p>
-        <p>تعرض الحاسبة القسط الشهري، وإجمالي المبلغ المدفوع، وإجمالي الفائدة، وعدد الأقساط. ويمكنك من صفحة النتائج الاطلاع على جدول الأقساط أو استخدام السداد المبكر.</p>
-        <p>في السداد المبكر أدخل عدد الأقساط التي تم سدادها ونسبة رسوم السداد المبكر، ثم اضغط «احسب السداد المبكر» لعرض المبلغ المتبقي والتكلفة والتوفير المتوقع.</p>
-    </div>
-    <div class="info-bottom">
-        <div class="actions">
-            <button class="outline" onclick="backToInput()">← العودة إلى الصفحة الرئيسية</button>
-        </div>
-    </div>
-</section>
-
-</div>
-
-<script>
-let loan={};
-
-function formatThousands(el){
-    const raw=String(el.value||"").replace(/[^0-9٠-٩]/g,"");
-    if(!raw){el.value="";return;}
-    const western=raw.replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d));
-    el.value=Number(western).toLocaleString("en-US");
-}
-
-function normalizeNumber(value){
-    if(value===undefined||value===null) return "";
-    return String(value)
-        .replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d))
-        .replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d))
-        .replace(/٬/g,"").replace(/,/g,"").replace(/[٫،]/g,".").replace(/[^\d.-]/g,"");
-}
-
-function num(id){
-    return parseFloat(normalizeNumber(document.getElementById(id).value));
-}
-
-function fmt(n){
-    return Number(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
-}
-
-function hideAll(){
-    ["inputPage","resultsPage","schedulePage","earlyPage","privacyPage","guidePage"].forEach(id=>{
-        document.getElementById(id).classList.add("hidden");
-    });
-}
-
-function calculateLoan(){
-    const p=num("principal");
-    const annual=num("interest");
-    const years=num("years");
-
-    if(!(p>0)||!(annual>=0)||!(years>0)){
-        alert("يرجى إدخال بيانات القرض بشكل صحيح");
-        return;
-    }
-
-    const months=Math.round(years*12);
-    const r=annual/100/12;
-    let payment;
-
-    if(r===0){
-        payment=p/months;
-    }else{
-        payment=(p*r)/(1-Math.pow(1+r,-months));
-    }
-
-    const totalPaid=payment*months;
-    const totalInterest=totalPaid-p;
-
-    loan={p,annual,years,months,r,payment,totalPaid,totalInterest};
-
-    document.getElementById("monthlyPayment").textContent=fmt(payment);
-    document.getElementById("totalPaid").textContent=fmt(totalPaid);
-    document.getElementById("totalInterest").textContent=fmt(totalInterest);
-    document.getElementById("installments").textContent=months.toLocaleString("en-US");
-
-    hideAll();
-    document.getElementById("resultsPage").classList.remove("hidden");
-}
-
-function showResults(){
-    hideAll();
-    document.getElementById("resultsPage").classList.remove("hidden");
-}
-
-function backToInput(){
-    hideAll();
-    document.getElementById("inputPage").classList.remove("hidden");
-}
-
-function newEntry(){
-    loan={};
-    ["principal","interest","years","paidInstallments","earlyFee"].forEach(id=>{
-        document.getElementById(id).value="";
-    });
-    ["monthlyPayment","totalPaid","totalInterest","installments","originalPrincipal","principalPaid","remainingPrincipal","earlyFeeValue","closingAmount","futureInterest","actualFinancingCost","expectedSaving"].forEach(id=>{
-        document.getElementById(id).textContent="-";
-    });
-    document.getElementById("schedule").innerHTML="";
-    hideAll();
-    document.getElementById("inputPage").classList.remove("hidden");
-}
-
-function showPrivacy(){
-    hideAll();
-    document.getElementById("privacyPage").classList.remove("hidden");
-}
-
-function showGuide(){
-    hideAll();
-    document.getElementById("guidePage").classList.remove("hidden");
-}
-
-function showSchedule(){
-    let balance=loan.p;
-    let html=`<table><thead><tr><th>م</th><th>القسط</th><th>الفائدة</th><th>أصل القرض</th><th>الرصيد المتبقي</th></tr></thead><tbody>`;
-
-    for(let i=1;i<=loan.months;i++){
-        const interest=balance*loan.r;
-        let principalPaid=loan.payment-interest;
-        if(i===loan.months) principalPaid=balance;
-        balance=Math.max(0,balance-principalPaid);
-
-        html+=`<tr><td>${i}</td><td>${fmt(i===loan.months?principalPaid+interest:loan.payment)}</td><td>${fmt(interest)}</td><td>${fmt(principalPaid)}</td><td>${fmt(balance)}</td></tr>`;
-    }
-    html+=`</tbody></table>`;
-
-    document.getElementById("schedule").innerHTML=html;
-    hideAll();
-    document.getElementById("schedulePage").classList.remove("hidden");
-}
-
-function showEarly(){
-    hideAll();
-    document.getElementById("earlyPage").classList.remove("hidden");
-}
-
-function calculateEarly(){
-    const paid=parseInt(normalizeNumber(document.getElementById("paidInstallments").value),10);
-    const feeRate=num("earlyFee")/100;
-
-    if(!Number.isInteger(paid)||paid<0||paid>=loan.months||!(feeRate>=0)){
-        alert("أدخل عدد أقساط صحيحًا بين صفر وأقل من إجمالي الأقساط");
-        return;
-    }
-
-    let balance = (loan.r === 0) ? (loan.p - loan.payment * paid) : (loan.p * Math.pow(1 + loan.r, paid) - loan.payment * ((Math.pow(1 + loan.r, paid) - 1) / loan.r));
-    balance=Math.max(0,balance);
-
-    const remainingPayments=loan.months-paid;
-    const futurePayments=loan.payment*remainingPayments;
-    const futureInterest=Math.max(0,futurePayments-balance);
-    const fee=balance*feeRate;
-    const closing=balance+fee;
-    const saving=Math.max(0,futureInterest-fee);
-    const paidAmount=loan.payment*paid;
-    const principalPaid=Math.max(0,loan.p-balance);
-    const actualFinancingCost=Math.max(0,paidAmount-principalPaid);
-
-    document.getElementById("originalPrincipal").textContent=fmt(loan.p);
-    document.getElementById("principalPaid").textContent=fmt(principalPaid);
-    document.getElementById("remainingPrincipal").textContent=fmt(balance);
-    document.getElementById("earlyFeeValue").textContent=fmt(fee);
-    document.getElementById("closingAmount").textContent=fmt(closing);
-    document.getElementById("futureInterest").textContent=fmt(futureInterest);
-    document.getElementById("actualFinancingCost").textContent=fmt(actualFinancingCost);
-    document.getElementById("expectedSaving").textContent=fmt(saving);
-}
-
-document.addEventListener("gesturestart",function(e){e.preventDefault();});
-</script>
+        function resetForm() {
+            document.getElementById('loanAmount').value = '';
+            document.getElementById('interestRate').value = '';
+            document.getElementById('loanYears').value = '';
+            document.getElementById('resultDiv').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
