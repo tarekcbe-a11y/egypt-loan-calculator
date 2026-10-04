@@ -1,356 +1,179 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاسبة القروض البنكية</title>
-    <!-- استدعاء سكريبت جوجل لإعلانات البنر -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4957378617452523~7270351395" crossorigin="anonymous"></script>
-    <style>
-        :root {
-            --bg-color: #0d1117;
-            --container-bg: #161b22;
-            --border-gold: #c9d1d9;
-            --accent-gold: #f0f6fc;
-            --text-color: #c9d1d9;
-            --input-bg: #0d1117;
-            --btn-bg: #21262d;
-            --btn-text: #f0f6fc;
-            --table-header: #30363d;
-        }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            direction: rtl;
-        }
+<meta charset="UTF-8">
 
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            background-color: var(--container-bg);
-            border: 2px solid var(--border-gold);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-        }
+<meta name="viewport"
+content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        h1, h2 {
-            text-align: center;
-            color: var(--accent-gold);
-        }
+<meta name="theme-color" content="#050505">
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+<title>سياسة الخصوصية - حاسبة القروض</title>
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: var(--accent-gold);
-        }
+<style>
 
-        input {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-gold);
-            border-radius: 6px;
-            color: var(--text-color);
-            font-size: 16px;
-            box-sizing: border-box;
-        }
+*{
+    box-sizing:border-box;
+}
 
-        input:focus {
-            outline: none;
-            border-color: #58a6ff;
-            box-shadow: 0 0 5px rgba(88, 166, 255, 0.4);
-        }
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    background:#050505;
+    color:#fff;
+    font-family:Arial,Tahoma,sans-serif;
+}
 
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--btn-bg);
-            color: var(--btn-text);
-            border: 1px solid var(--border-gold);
-            border-radius: 6px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-            margin-top: 10px;
-        }
+body{
+    padding:14px;
+}
 
-        button:hover {
-            background-color: #30363d;
-        }
+.container{
+    width:100%;
+    max-width:800px;
+    margin:0 auto;
+    background:#0b0b0b;
+    border:2px solid #d4af37;
+    border-radius:28px;
+    padding:20px;
+}
 
-        .results {
-            margin-top: 25px;
-            padding: 15px;
-            background-color: var(--input-bg);
-            border-radius: 8px;
-            border: 1px solid var(--border-gold);
-        }
+h1{
+    width:100%;
+    margin:0 0 6px;
+    padding:0;
+    color:#fff;
+    text-align:center;
+    font-size:25px;
+    font-weight:800;
+}
 
-        .result-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
+h2{
+    width:100%;
+    margin:0 0 22px;
+    padding:0;
+    color:#d4af37;
+    text-align:center;
+    font-size:36px;
+    font-weight:800;
+}
 
-        .result-value {
-            font-weight: bold;
-            color: var(--accent-gold);
-        }
+.info-text{
+    display:block;
+    width:100%;
+    max-width:100%;
+    margin:0;
+    padding:0;
+    color:#c8c8c8;
+    font-size:17px;
+    line-height:1.8;
+    text-align:right;
+    direction:rtl;
+}
 
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
+.info-text p{
+    display:block;
+    width:100%;
+    max-width:100%;
+    margin:0 0 16px;
+    padding:0;
+    color:#c8c8c8;
+    font-size:17px;
+    line-height:1.8;
+    text-align:right;
+    direction:rtl;
+}
 
-        th, td {
-            border: 1px solid var(--border-gold);
-            padding: 10px;
-            text-align: center;
-        }
+.info-text strong{
+    color:#d4af37;
+}
 
-        th {
-            background-color: var(--table-header);
-            color: var(--accent-gold);
-        }
+.footer{
+    width:100%;
+    margin-top:25px;
+    padding-top:16px;
+    border-top:1px solid #333;
+    color:#777;
+    text-align:center;
+    font-size:14px;
+}
 
-        .hidden {
-            display: none;
-        }
+@media(max-width:560px){
 
-        .footer-note {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #8b949e;
-        }
+    body{
+        padding:14px;
+    }
 
-        /* تنسيق صفحات المعلومات والخصوصية */
-        .info-page {
-            margin-top: 15px;
-            line-height: 1.8;
-            font-size: 15px;
-        }
+    .container{
+        width:100%;
+        padding:16px;
+    }
 
-        .info-page p {
-            margin-bottom: 12px;
-        }
+    h1{
+        font-size:23px;
+    }
 
-        .nav-links {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-        }
+    h2{
+        font-size:32px;
+        margin-bottom:18px;
+    }
 
-        .nav-links span {
-            cursor: pointer;
-            color: #58a6ff;
-            margin: 0 10px;
-        }
+    .info-text,
+    .info-text p{
+        width:100%;
+        max-width:100%;
+        font-size:15px;
+        line-height:1.75;
+    }
 
-        .nav-links span:hover {
-            text-decoration: underline;
-        }
+}
 
-        /* مكان إعلان البنر */
-        .banner-container {
-            margin-top: 20px;
-            text-align: center;
-        }
-    </style>
+</style>
+
 </head>
+
 <body>
 
 <div class="container">
-    <h1>حاسبة القروض البنكية</h1>
-    
-    <!-- الصفحة الرئيسية للحاسبة -->
-    <div id="calculator-form">
-        <div class="form-group">
-            <label for="loan-amount">قيمة القرض (جنيه):</label>
-            <input type="number" id="loan-amount" placeholder="أدخل مبلغ القرض">
-        </div>
 
-        <div class="form-group">
-            <label for="interest-rate">سعر الفائدة السنوية (%):</label>
-            <input type="number" step="0.01" id="interest-rate" placeholder="أدخل نسبة الفائدة">
-        </div>
+    <h1>جروب عملاء البنوك المصرية</h1>
 
-        <div class="form-group">
-            <label for="loan-term">مدة القرض (بالسنوات):</label>
-            <input type="number" id="loan-term" placeholder="أدخل عدد السنوات">
-        </div>
+    <h2>سياسة الخصوصية</h2>
 
-        <button onclick="calculateLoan()">احسب القسط</button>
+    <div class="info-text">
 
-        <div class="nav-links">
-            <span onclick="showPage('privacy-section')">سياسة الخصوصية</span> | 
-            <span onclick="showPage('calculator-form')">الرئيسية</span>
-        </div>
-    </div>
-
-    <!-- نتائج الحساب -->
-    <div id="results-section" class="results hidden">
-        <h2>نتائج الحساب</h2>
-        <div class="result-item">
-            <span>القسط الشهري:</span>
-            <span id="res-monthly" class="result-value">0</span>
-        </div>
-        <div class="result-item">
-            <span>إجمالي الفوائد:</span>
-            <span id="res-total-interest" class="result-value">0</span>
-        </div>
-        <div class="result-item">
-            <span>إجمالي المبلغ المدفوع:</span>
-            <span id="res-total-paid" class="result-value">0</span>
-        </div>
-
-        <button onclick="toggleSchedule()" style="background-color: #238636; margin-top: 15px;">عرض جدول الأقساط</button>
-        <button onclick="showPage('calculator-form')" style="background-color: #30363d; margin-top: 10px;">العودة للرئيسية</button>
-    </div>
-
-    <!-- جدول الأقساط الشهري -->
-    <div id="schedule-section" class="hidden">
-        <h2>جدول الأقساط الشهري</h2>
-        <div style="overflow-x: auto;">
-            <table id="schedule-table">
-                <thead>
-                    <tr>
-                        <th>الشهر</th>
-                        <th>القسط</th>
-                        <th>الفوائد</th>
-                        <th>المسدد من الأصل</th>
-                        <th>الرصيد المتبقي</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- سيتم تعبئة الجدول برمجياً -->
-                </tbody>
-            </table>
-        </div>
-        <button onclick="showPage('results-section')" style="margin-top: 15px;">العودة للنتائج</button>
-    </div>
-
-    <!-- صفحة سياسة الخصوصية (المعدلة والموافقة لجوجل) -->
-    <div id="privacy-section" class="hidden info-page">
-        <h2>سياسة الخصوصية</h2>
         <p>
-            نحترم خصوصيتك ونحرص على حماية بياناتك. صُممت حاسبة القروض كأداة حسابية فقط، ولا تطلب اسمك أو رقم هاتفك أو بريدك الإلكتروني أو أي بيانات شخصية أو بنكية[span_0](start_span)[span_0](end_span).
+        نحترم خصوصيتك ونحرص على حماية بياناتك.
+        صُممت حاسبة القروض كأداة حسابية فقط،
+        ولا تطلب اسمك أو رقم هاتفك أو بريدك الإلكتروني
+        أو أي بيانات شخصية أو بنكية.
         </p>
+
         <p>
-            لا نطلب أرقام الحسابات أو البطاقات أو كلمات المرور، ولا يتم بيع أو مشاركة بيانات المستخدم لأغراض تجارية. 
-            <strong>يعرض التطبيق إعلانات قياسية (مثل Google AdMob)</strong> لدعم استمرارية التطبيق وتطويره، وغير مرتبط بأي بنك أو شركة تمويل أو جهة مالية[span_1](start_span)[span_1](end_span).
+        لا نطلب أرقام الحسابات أو البطاقات أو كلمات المرور،
+        ولا يتم بيع أو مشاركة بيانات المستخدم لأغراض إعلانية.
+        التطبيق <strong>لا يحتوي على إعلانات</strong>،
+        وغير مرتبط بأي بنك أو شركة تمويل أو جهة مالية.
         </p>
+
         <p>
-            جميع النتائج تقديرية وتعتمد على البيانات التي يدخلها المستخدم، ولا تمثل عرضًا ائتمانيًا أو قرارًا مالياً من أي جهة[span_2](start_span)[span_2](end_span).
+        جميع النتائج تقديرية وتعتمد على البيانات التي يدخلها المستخدم،
+        ولا تمثل عرضًا ائتمانيًا أو قرارًا ماليًا من أي جهة.
         </p>
-        <button onclick="showPage('calculator-form')" style="margin-top: 15px;">العودة إلى الصفحة الرئيسية</button>
+
     </div>
 
-    <!-- مكان إعلان البنر (AdMob Banner) -->
-    <div class="banner-container">
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:320px;height:50px"
-             data-ad-client="ca-app-pub-4957378617452523"
-             data-ad-slot="4775301562"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-
-    <div class="footer-note">
+    <div class="footer">
         إعداد أ/ طارق متولى
     </div>
+
 </div>
 
-<script>
-    function showPage(pageId) {
-        document.getElementById('calculator-form').classList.add('hidden');
-        document.getElementById('results-section').classList.add('hidden');
-        document.getElementById('schedule-section').classList.add('hidden');
-        document.getElementById('privacy-section').classList.add('hidden');
-
-        document.getElementById(pageId).classList.remove('hidden');
-    }
-
-    function calculateLoan() {
-        const principal = parseFloat(document.getElementById('loan-amount').value);
-        const annualRate = parseFloat(document.getElementById('interest-rate').value);
-        const years = parseInt(document.getElementById('loan-term').value);
-
-        if (isNaN(principal) || isNaN(annualRate) || isNaN(years) || principal <= 0 || annualRate < 0 || years <= 0) {
-            alert('الرجاء إدخال بيانات صحيحة في جميع الحقول.');
-            return;
-        }
-
-        const monthlyRate = (annualRate / 100) / 12;
-        const totalMonths = years * 12;
-
-        let monthlyPayment = 0;
-        if (monthlyRate === 0) {
-            monthlyPayment = principal / totalMonths;
-        } else {
-            monthlyPayment = (principal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
-        }
-
-        const totalPaid = monthlyPayment * totalMonths;
-        const totalInterest = totalPaid - principal;
-
-        document.getElementById('res-monthly').innerText = monthlyPayment.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' جنيه';
-        document.getElementById('res-total-interest').innerText = totalInterest.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' جنيه';
-        document.getElementById('res-total-paid').innerText = totalPaid.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' جنيه';
-
-        showPage('results-section');
-
-        // بناء جدول الأقساط
-        let balance = principal;
-        let tableBody = '';
-        
-        for (let i = 1; i <= totalMonths; i++) {
-            let interestPayment = balance * monthlyRate;
-            let principalPayment = monthlyPayment - interestPayment;
-            balance -= principalPayment;
-            if (balance < 0) balance = 0;
-
-            tableBody += `
-                <tr>
-                    <td>${i}</td>
-                    <td>${monthlyPayment.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                    <td>${interestPayment.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                    <td>${principalPayment.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                    <td>${balance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                </tr>
-            `;
-        }
-        document.querySelector('#schedule-table tbody').innerHTML = tableBody;
-    }
-
-    function toggleSchedule() {
-        const scheduleSection = document.getElementById('schedule-section');
-        const resultsSection = document.getElementById('results-section');
-        
-        if (scheduleSection.classList.contains('hidden')) {
-            scheduleSection.classList.remove('hidden');
-            resultsSection.classList.add('hidden');
-        } else {
-            scheduleSection.classList.add('hidden');
-            resultsSection.classList.remove('hidden');
-        }
-    }
-</script>
-
 </body>
+
 </html>
