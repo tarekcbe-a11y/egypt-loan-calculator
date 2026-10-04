@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حاسبة القروض البنكية</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4957378617452523~7270351395" crossorigin="anonymous"></script>
     <style>
         :root {
             --bg-color: #0d1117;
@@ -52,8 +51,6 @@
             margin-bottom: 8px;
             font-weight: bold;
             color: var(--accent-gold);
-            text-align: right;
-            direction: rtl;
         }
 
         input {
@@ -66,7 +63,6 @@
             font-size: 16px;
             box-sizing: border-box;
             text-align: right;
-            direction: rtl;
         }
 
         input:focus {
@@ -106,14 +102,11 @@
             justify-content: space-between;
             margin-bottom: 10px;
             font-size: 16px;
-            direction: rtl;
         }
 
         .result-value {
             font-weight: bold;
             color: var(--accent-gold);
-            direction: ltr;
-            display: inline-block;
         }
 
         table {
@@ -144,38 +137,6 @@
             font-size: 14px;
             color: #8b949e;
         }
-
-        .info-page {
-            margin-top: 15px;
-            line-height: 1.8;
-            font-size: 15px;
-            text-align: right;
-        }
-
-        .info-page p {
-            margin-bottom: 12px;
-        }
-
-        .nav-links {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-        }
-
-        .nav-links span {
-            cursor: pointer;
-            color: #58a6ff;
-            margin: 0 10px;
-        }
-
-        .nav-links span:hover {
-            text-decoration: underline;
-        }
-
-        .banner-container {
-            margin-top: 20px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -183,29 +144,22 @@
 <div class="container">
     <h1>حاسبة القروض البنكية</h1>
     
-    <div id="calculator-form">
-        <div class="form-group">
-            <label for="loan-amount">قيمة القرض (جنيه)</label>
-            <input type="number" id="loan-amount" placeholder="أدخل مبلغ القرض">
-        </div>
-
-        <div class="form-group">
-            <label for="interest-rate">سعر الفائدة السنوية (%)</label>
-            <input type="number" step="0.01" id="interest-rate" placeholder="أدخل نسبة الفائدة">
-        </div>
-
-        <div class="form-group">
-            <label for="loan-term">مدة القرض (بالسنوات)</label>
-            <input type="number" id="loan-term" placeholder="أدخل عدد السنوات">
-        </div>
-
-        <button onclick="calculateLoan()">احسب القسط</button>
-
-        <div class="nav-links">
-            <span onclick="showPage('privacy-section')">سياسة الخصوصية</span> | 
-            <span onclick="showPage('calculator-form')">الرئيسية</span>
-        </div>
+    <div class="form-group">
+        <label>قيمة القرض (جنيه):</label>
+        <input type="number" id="loan-amount" placeholder="أدخل مبلغ القرض">
     </div>
+
+    <div class="form-group">
+        <label>سعر الفائدة السنوية (%):</label>
+        <input type="number" step="0.01" id="interest-rate" placeholder="أدخل نسبة الفائدة">
+    </div>
+
+    <div class="form-group">
+        <label>مدة القرض (بالسنوات):</label>
+        <input type="number" id="loan-term" placeholder="أدخل عدد السنوات">
+    </div>
+
+    <button onclick="calculateLoan()">احسب القسط</button>
 
     <div id="results-section" class="results hidden">
         <h2>نتائج الحساب</h2>
@@ -221,54 +175,6 @@
             <span>إجمالي المبلغ المدفوع:</span>
             <span id="res-total-paid" class="result-value">0</span>
         </div>
-
-        <button onclick="toggleSchedule()" style="background-color: #238636; margin-top: 15px;">عرض جدول الأقساط</button>
-        <button onclick="showPage('calculator-form')" style="background-color: #30363d; margin-top: 10px;">العودة للرئيسية</button>
-    </div>
-
-    <div id="schedule-section" class="hidden">
-        <h2>جدول الأقساط الشهري</h2>
-        <div style="overflow-x: auto;">
-            <table id="schedule-table">
-                <thead>
-                    <tr>
-                        <th>الشهر</th>
-                        <th>القسط</th>
-                        <th>الفوائد</th>
-                        <th>المسدد من الأصل</th>
-                        <th>الرصيد المتبقي</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-        <button onclick="showPage('results-section')" style="margin-top: 15px;">العودة للنتائج</button>
-    </div>
-
-    <div id="privacy-section" class="hidden info-page">
-        <h2>سياسة الخصوصية</h2>
-        <p>
-            نحترم خصوصيتك ونحرص على حماية بياناتك. صُممت حاسبة القروض كأداة حسابية فقط، ولا تطلب اسمك أو رقم هاتفك أو بريدك الإلكتروني أو أي بيانات شخصية أو بنكية.
-        </p>
-        <p>
-            لا نطلب أرقام الحسابات أو البطاقات أو كلمات المرور، ولا يتم بيع أو مشاركة بيانات المستخدم لأغراض تجارية. 
-            <strong>يعرض التطبيق إعلانات قياسية (مثل Google AdMob)</strong> لدعم استمرارية التطبيق وتطويره، وغير مرتبط بأي بنك أو شركة تمويل أو جهة مالية.
-        </p>
-        <p>
-            جميع النتائج تقديرية وتعتمد على البيانات التي يدخلها المستخدم، ولا تمثل عرضًا ائتمانيًا أو قرارًا مالياً من أي جهة.
-        </p>
-        <button onclick="showPage('calculator-form')" style="margin-top: 15px;">العودة إلى الصفحة الرئيسية</button>
-    </div>
-
-    <div class="banner-container">
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:320px;height:50px"
-             data-ad-client="ca-app-pub-4957378617452523"
-             data-ad-slot="4775301562"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
     </div>
 
     <div class="footer-note">
@@ -277,15 +183,6 @@
 </div>
 
 <script>
-    function showPage(pageId) {
-        document.getElementById('calculator-form').classList.add('hidden');
-        document.getElementById('results-section').classList.add('hidden');
-        document.getElementById('schedule-section').classList.add('hidden');
-        document.getElementById('privacy-section').classList.add('hidden');
-
-        document.getElementById(pageId).classList.remove('hidden');
-    }
-
     function calculateLoan() {
         const principal = parseFloat(document.getElementById('loan-amount').value);
         const annualRate = parseFloat(document.getElementById('interest-rate').value);
@@ -313,41 +210,7 @@
         document.getElementById('res-total-interest').innerText = totalInterest.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' جنيه';
         document.getElementById('res-total-paid').innerText = totalPaid.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' جنيه';
 
-        showPage('results-section');
-
-        let balance = principal;
-        let tableBody = '';
-        
-        for (let i = 1; i <= totalMonths; i++) {
-            let interestPayment = balance * monthlyRate;
-            let principalPayment = monthlyPayment - interestPayment;
-            balance -= principalPayment;
-            if (balance < 0) balance = 0;
-
-            tableBody += `
-                <tr>
-                    <td>${i}</td>
-                    <td>${monthlyPayment.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                    <td>${interestPayment.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                    <td>${principalPayment.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                    <td>${balance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                </tr>
-            `;
-        }
-        document.querySelector('#schedule-table tbody').innerHTML = tableBody;
-    }
-
-    function toggleSchedule() {
-        const scheduleSection = document.getElementById('schedule-section');
-        const resultsSection = document.getElementById('results-section');
-        
-        if (scheduleSection.classList.contains('hidden')) {
-            scheduleSection.classList.remove('hidden');
-            resultsSection.classList.add('hidden');
-        } else {
-            scheduleSection.classList.add('hidden');
-            resultsSection.classList.remove('hidden');
-        }
+        document.getElementById('results-section').classList.remove('hidden');
     }
 </script>
 
