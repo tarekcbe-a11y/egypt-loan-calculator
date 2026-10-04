@@ -28,7 +28,7 @@
             box-sizing: border-box;
         }
         .container {
-            max-width: 400px;
+            max-width: 450px;
             width: 100%;
             background: var(--card-bg);
             padding: 20px;
@@ -102,11 +102,31 @@
             border-radius: 8px;
             border: 1px solid var(--border-color);
             text-align: right;
-            display: none;
         }
         .result p {
             margin: 8px 0;
             font-size: 15px;
+        }
+        .table-container {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 6px;
+        }
+        th {
+            background-color: #1a202c;
+            color: var(--gold-color);
         }
         .footer-info {
             margin-top: 20px;
@@ -136,7 +156,7 @@
         <div class="sub-title">حاسبة القروض البنكية</div>
         
         <div class="form-group">
-            <label>قيمة القرض</label>
+            <label>قيمة القرض (جنيه)</label>
             <input type="number" id="loanAmount" placeholder="أدخل مبلغ القرض">
         </div>
         
@@ -149,14 +169,37 @@
             <label>مدة القرض بالسنوات</label>
             <input type="number" id="loanYears" placeholder="عدد السنوات">
         </div>
+
+        <div class="form-group">
+            <label>رقم الشهر للسداد المبكر (اختياري)</label>
+            <input type="number" id="earlyMonth" placeholder="مثال: الشهر رقم 12">
+        </div>
         
-        <button class="btn-calc" onclick="calculateLoan()">احسب القرض</button>
+        <button class="btn-calc" onclick="calculateLoan()">احسب القرض والأقساط</button>
         <button class="btn-reset" onclick="resetForm()">إدخال جديد</button>
         
-        <div class="result" id="resultDiv">
+        <div class="result" id="resultDiv" style="display: none;">
             <p><strong>قسط الشهر:</strong> <span id="monthlyPayment">0</span> جنيه</p>
             <p><strong>إجمالي الفوائد:</strong> <span id="totalInterest">0</span> جنيه</p>
             <p><strong>إجمالي المبلغ المستحق:</strong> <span id="totalPayment">0</span> جنيه</p>
+            <div id="earlyResult" style="margin-top: 10px; color: var(--gold-color); font-weight: bold;"></div>
+            
+            <div style="margin-top: 15px; font-weight: bold; text-align: center; color: var(--gold-color);">جدول الأقساط الشهرية</div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الشهر</th>
+                            <th>القصط</th>
+                            <th>الفوائد</th>
+                            <th>الأصل المتبقي</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody">
+                        <!-- جدول الأقساط -->
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="footer-info">
@@ -183,9 +226,10 @@
             const principal = parseFloat(document.getElementById('loanAmount').value);
             const annualRate = parseFloat(document.getElementById('interestRate').value);
             const years = parseFloat(document.getElementById('loanYears').value);
+            const earlyMonthInput = parseInt(document.getElementById('earlyMonth').value);
 
             if (isNaN(principal) || isNaN(annualRate) || isNaN(years) || principal <= 0 || annualRate < 0 || years <= 0) {
-                alert('الرجاء إدخال بيانات صحيحة وسليمة');
+                alert('الرجاء إدخال بيانات صحيحة وسليمة للقرض');
                 return;
             }
 
@@ -206,7 +250,32 @@
             document.getElementById('monthlyPayment').innerText = monthlyPayment.toFixed(2);
             document.getElementById('totalInterest').innerText = totalInterest.toFixed(2);
             document.getElementById('totalPayment').innerText = totalPayment.toFixed(2);
-            
+
+            // حساب جدول الأقساط والسداد المبكر
+            let balance = principal;
+            let scheduleHTML = '';
+            let earlyBalanceText = '';
+
+            for (let i = 1; i <= numberOfPayments; i++) {
+                let interestPayment = balance * monthlyRate;
+                let principalPayment = monthlyPayment - interestPayment;
+                balance -= principalPayment;
+                if (balance < 0) balance = 0;
+
+                scheduleHTML += `<tr>
+                    <td>${i}</td>
+                    <td>${monthlyPayment.toFixed(0)}</td>
+                    <td>${interestPayment.toFixed(0)}</td>
+                    <td>${balance.toFixed(0)}</td>
+                </tr>`;
+
+                if (!isNaN(earlyMonthInput) && earlyMonthInput === i) {
+                    earlyBalanceText = `المبلغ المتبقي للسداد المبكر بنهاية الشهر ${i}: ${balance.toFixed(2)} جنيه`;
+                }
+            }
+
+            document.getElementById('scheduleBody').innerHTML = scheduleHTML;
+            document.getElementById('earlyResult').innerText = earlyBalanceText;
             document.getElementById('resultDiv').style.display = 'block';
         }
 
@@ -214,6 +283,7 @@
             document.getElementById('loanAmount').value = '';
             document.getElementById('interestRate').value = '';
             document.getElementById('loanYears').value = '';
+            document.getElementById('earlyMonth').value = '';
             document.getElementById('resultDiv').style.display = 'none';
         }
     </script>
