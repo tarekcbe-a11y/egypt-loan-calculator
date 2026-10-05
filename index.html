@@ -35,7 +35,7 @@ html,body{
 }
 
 body{
-    padding:10px;
+    padding:8px;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -47,12 +47,12 @@ body{
     width:100%;
     max-width:750px;
     height:100%;
-    max-height:92vh;
+    max-height:96vh;
     margin:auto;
     background:#0b0b0b;
     border:2px solid #d4af37;
     border-radius:24px;
-    padding:14px 16px;
+    padding:12px 14px;
     box-shadow:0 12px 35px rgba(0,0,0,.45);
     display:flex;
     flex-direction:column;
@@ -63,6 +63,14 @@ body{
     display:none!important;
 }
 
+/* تنسيق عام للأقسام الداخلية لضمان توزيع متناسق ومنع الفراغات */
+section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
 
 /* =========================
    العنوان
@@ -70,36 +78,30 @@ body{
 
 .header{
     text-align:center;
-    margin-bottom:12px;
+    margin-bottom:6px;
     flex-shrink:0;
 }
 
 .group-name{
     color:#fff;
-    font-size:22px;
+    font-size:20px;
     font-weight:800;
-    margin:0 0 3px;
+    margin:0 0 2px;
 }
 
 .subtitle{
     color:#d4af37;
-    font-size:19px;
+    font-size:17px;
     font-weight:700;
     margin:0;
-}
-
-.developer{
-    color:#777;
-    font-size:13px;
-    margin-top:4px;
 }
 
 .panel-title{
     color:#d4af37;
     text-align:center;
-    font-size:30px;
+    font-size:24px;
     font-weight:800;
-    margin:0 0 12px;
+    margin:0 0 8px;
     flex-shrink:0;
 }
 
@@ -111,23 +113,23 @@ body{
 label{
     display:block;
     color:#ddd;
-    font-size:17px;
+    font-size:15px;
     font-weight:600;
-    margin:0 0 5px;
+    margin:0 0 4px;
 }
 
 input{
     width:100%;
-    height:46px;
+    height:42px;
     padding:4px 12px;
     border:2px solid #555;
-    border-radius:16px;
+    border-radius:14px;
     background:#181818;
     color:#bbb;
-    font-size:21px;
+    font-size:19px;
     outline:none;
     text-align:right;
-    margin:0 0 12px;
+    margin:0 0 8px;
 }
 
 input:focus{
@@ -141,13 +143,13 @@ input:focus{
 ========================= */
 
 .early-input{
-    margin-bottom:12px;
+    margin-bottom:8px;
 }
 
 .early-input::placeholder{
     color:#777;
     opacity:1;
-    font-size:16px;
+    font-size:15px;
     font-weight:400;
 }
 
@@ -158,12 +160,12 @@ input:focus{
 
 button{
     width:100%;
-    min-height:46px;
+    min-height:42px;
     border:2px solid #d4af37;
-    border-radius:16px;
+    border-radius:14px;
     background:#d4af37;
     color:#050505;
-    font-size:18px;
+    font-size:16px;
     font-weight:800;
     cursor:pointer;
     margin-top:2px;
@@ -187,7 +189,7 @@ button.outline{
     background:#b00000;
     border-color:#b00000;
     color:#fff;
-    margin-top:8px;
+    margin-top:4px;
 }
 
 .new-entry-button:active{
@@ -201,11 +203,11 @@ button.outline{
 ========================= */
 
 .early-calc-button{
-    min-height:54px;
-    margin-top:6px;
+    min-height:46px;
+    margin-top:4px;
     margin-bottom:4px;
-    border-radius:18px;
-    font-size:20px;
+    border-radius:14px;
+    font-size:18px;
     font-weight:900;
 }
 
@@ -217,9 +219,9 @@ button.outline{
 .results-title{
     color:#d4af37;
     text-align:center;
-    font-size:32px;
+    font-size:26px;
     font-weight:800;
-    margin:0 0 10px;
+    margin:0 0 8px;
     flex-shrink:0;
 }
 
@@ -227,15 +229,17 @@ button.outline{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:8px;
+    flex-grow:1;
+    align-content:center;
 }
 
 .card{
     background:#151515;
     border:2px solid #303030;
-    border-radius:16px;
-    padding:10px 8px;
+    border-radius:14px;
+    padding:8px;
     text-align:center;
-    min-height:90px;
+    min-height:75px;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -243,13 +247,13 @@ button.outline{
 
 .card .label{
     color:#aaa;
-    font-size:16px;
-    margin-bottom:4px;
+    font-size:15px;
+    margin-bottom:2px;
 }
 
 .card .value{
     color:#d4af37;
-    font-size:20px;
+    font-size:18px;
     font-weight:800;
     direction:ltr;
     background:transparent!important;
@@ -266,10 +270,10 @@ button.outline{
 
 .actions{
     border-top:1px solid #333;
-    margin-top:12px;
-    padding-top:12px;
+    margin-top:8px;
+    padding-top:8px;
     display:grid;
-    gap:8px;
+    gap:6px;
     flex-shrink:0;
 }
 
@@ -281,8 +285,8 @@ button.outline{
 .schedule-wrap{
     overflow-y:auto;
     overflow-x:hidden;
-    margin-top:12px;
-    border-radius:14px;
+    margin-top:8px;
+    border-radius:12px;
     flex-grow:1;
     background:#111;
     border:1px solid #333;
@@ -300,7 +304,7 @@ table{
 
 th,td{
     border:1px solid #333;
-    padding:8px 3px;
+    padding:6px 3px;
     text-align:center;
     white-space:nowrap;
     overflow:hidden;
@@ -331,8 +335,8 @@ th:nth-child(5),td:nth-child(5){width:25%}
 ========================= */
 
 .early-grid{
-    margin-top:10px;
-    padding-top:10px;
+    margin-top:6px;
+    padding-top:6px;
     border-top:1px solid #333;
     flex-grow:1;
     overflow-y:auto;
@@ -341,13 +345,13 @@ th:nth-child(5),td:nth-child(5){width:25%}
 .early-results{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:6px 10px;
+    gap:4px 8px;
 }
 
 .early-result{
     color:#aaa;
-    font-size:14px;
-    line-height:1.4;
+    font-size:13px;
+    line-height:1.3;
     text-align:center;
     padding:2px 0;
 }
@@ -370,12 +374,12 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
 .early-result.stacked .result-label{
     color:#aaa;
-    font-size:13px;
-    margin-bottom:2px;
+    font-size:12px;
+    margin-bottom:1px;
 }
 
 .early-result.stacked span{
-    font-size:15px;
+    font-size:14px;
 }
 
 .early-result.full-width{
@@ -390,24 +394,24 @@ th:nth-child(5),td:nth-child(5){width:25%}
 .home-footer{
     text-align:center;
     margin-top:auto;
-    padding-top:10px;
+    padding-top:6px;
     border-top:1px solid #333;
     flex-shrink:0;
 }
 
 .home-footer .developer-bottom{
     color:#777;
-    font-size:13px;
-    margin-bottom:5px;
+    font-size:12px;
+    margin-bottom:3px;
 }
 
 .footer-links{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:10px;
+    gap:8px;
     color:#d4af37;
-    font-size:13px;
+    font-size:12px;
 }
 
 .footer-links button{
@@ -416,7 +420,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
     border:0;
     background:none;
     color:#d4af37;
-    font-size:13px;
+    font-size:12px;
     font-weight:600;
     padding:0;
     margin:0;
@@ -444,7 +448,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
     width:100%;
     text-align:center;
     color:#d4af37!important;
-    margin-bottom:12px;
+    margin-bottom:8px;
     flex-shrink:0;
 }
 
@@ -453,8 +457,8 @@ th:nth-child(5),td:nth-child(5){width:25%}
     max-width:100%!important;
     align-self:stretch!important;
     color:#c8c8c8!important;
-    font-size:15px;
-    line-height:1.6;
+    font-size:14px;
+    line-height:1.5;
     text-align:right!important;
     direction:rtl;
     margin:0;
@@ -467,7 +471,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
     width:100%!important;
     max-width:100%!important;
     color:#c8c8c8!important;
-    margin:0 0 10px;
+    margin:0 0 8px;
     padding:0;
     text-align:right!important;
     direction:rtl;
@@ -510,52 +514,56 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
     </div>
 
-    <label for="principal">
-        قيمة القرض
-    </label>
+    <div>
+        <label for="principal">
+            قيمة القرض
+        </label>
 
-    <input
-        id="principal"
-        type="text"
-        inputmode="numeric"
-        autocomplete="off"
-        oninput="formatThousands(this)"
-    >
+        <input
+            id="principal"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            oninput="formatThousands(this)"
+        >
 
-    <label for="interest">
-        نسبة الفائدة السنوية %
-    </label>
+        <label for="interest">
+            نسبة الفائدة السنوية %
+        </label>
 
-    <input
-        id="interest"
-        type="text"
-        inputmode="decimal"
-        autocomplete="off"
-    >
+        <input
+            id="interest"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+        >
 
-    <label for="years">
-        مدة القرض بالسنوات
-    </label>
+        <label for="years">
+            مدة القرض بالسنوات
+        </label>
 
-    <input
-        id="years"
-        type="text"
-        inputmode="decimal"
-        autocomplete="off"
-    >
+        <input
+            id="years"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+        >
+    </div>
 
-    <button onclick="calculateLoan()">
-        احسب القرض
-    </button>
+    <div>
+        <button onclick="calculateLoan()">
+            احسب القرض
+        </button>
 
-    <button
-        class="new-entry-button"
-        onclick="newEntry()">
-        إدخال جديد
-    </button>
+        <button
+            class="new-entry-button"
+            onclick="newEntry()">
+            إدخال جديد
+        </button>
+    </div>
 
     <!-- مكان بانر إعلانات Google AdMob المناسب -->
-    <div style="margin-top: 10px; text-align: center;">
+    <div style="text-align: center;">
         <ins class="adsbygoogle"
              style="display:inline-block;width:320px;height:50px"
              data-ad-client="ca-app-pub-4957378617452523"
@@ -647,7 +655,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
      3 - جدول الأقساط
 ========================= -->
 
-<section id="schedulePage" class="hidden" style="height:100%; display:flex; flex-direction:column;">
+<section id="schedulePage" class="hidden">
 
     <h2 class="panel-title">
         جدول الأقساط
@@ -672,35 +680,37 @@ th:nth-child(5),td:nth-child(5){width:25%}
      4 - السداد المبكر
 ========================= -->
 
-<section id="earlyPage" class="hidden" style="height:100%; display:flex; flex-direction:column;">
+<section id="earlyPage" class="hidden">
 
-    <h2 class="panel-title">
-        السداد المبكر
-    </h2>
+    <div>
+        <h2 class="panel-title">
+            السداد المبكر
+        </h2>
 
-    <input
-        id="paidInstallments"
-        class="early-input"
-        type="text"
-        inputmode="numeric"
-        autocomplete="off"
-        placeholder="عدد الأقساط التي تم سدادها"
-    >
+        <input
+            id="paidInstallments"
+            class="early-input"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            placeholder="عدد الأقساط التي تم سدادها"
+        >
 
-    <input
-        id="earlyFee"
-        class="early-input"
-        type="text"
-        inputmode="decimal"
-        autocomplete="off"
-        placeholder="نسبة رسوم السداد المبكر %"
-    >
+        <input
+            id="earlyFee"
+            class="early-input"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            placeholder="نسبة رسوم السداد المبكر %"
+        >
 
-    <button
-        class="early-calc-button"
-        onclick="calculateEarly()">
-        احسب السداد المبكر
-    </button>
+        <button
+            class="early-calc-button"
+            onclick="calculateEarly()">
+            احسب السداد المبكر
+        </button>
+    </div>
 
     <div class="early-grid">
 
