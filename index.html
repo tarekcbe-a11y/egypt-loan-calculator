@@ -11,8 +11,10 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 
 <title>حاسبة القروض البنكية</title>
 
-<!-- سكريبت إعلانات Google AdMob -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4957378617452523~7270351395" crossorigin="anonymous"></script>
+<!-- Google AdMob / Ads -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4957378617452523~7270351395"
+crossorigin="anonymous"></script>
 
 <style>
 
@@ -26,7 +28,7 @@ html,body{
     padding:0;
     width:100%;
     height:100%;
-    overflow:hidden; /* تثبيت تام لمنع أي حركة أو سكرول للشاشة بالكامل */
+    overflow:hidden;
     position:fixed;
     background:#050505;
     color:#fff;
@@ -37,16 +39,19 @@ html,body{
 body{
     padding:10px;
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
     overscroll-behavior:none;
 }
 
+/* =========================
+   الحاوية الرئيسية
+========================= */
+
 .container{
     width:100%;
     max-width:750px;
-    height:100%;
+    height:92vh;
     max-height:92vh;
     margin:auto;
     background:#0b0b0b;
@@ -54,13 +59,50 @@ body{
     border-radius:24px;
     padding:14px 16px;
     box-shadow:0 12px 35px rgba(0,0,0,.45);
+
     display:flex;
     flex-direction:column;
+
     overflow:hidden;
 }
 
 .hidden{
     display:none!important;
+}
+
+
+/* =========================
+   الصفحات الرئيسية
+========================= */
+
+#inputPage{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    flex:0 0 auto;
+}
+
+#resultsPage{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    flex:0 0 auto;
+}
+
+#schedulePage,
+#earlyPage{
+    width:100%;
+    height:100%;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+}
+
+#privacyPage,
+#guidePage{
+    width:100%;
+    height:100%;
+    min-height:0;
 }
 
 
@@ -236,6 +278,7 @@ button.outline{
     padding:10px 8px;
     text-align:center;
     min-height:90px;
+
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -268,8 +311,10 @@ button.outline{
     border-top:1px solid #333;
     margin-top:12px;
     padding-top:12px;
+
     display:grid;
     gap:8px;
+
     flex-shrink:0;
 }
 
@@ -283,9 +328,13 @@ button.outline{
     overflow-x:hidden;
     margin-top:12px;
     border-radius:14px;
-    flex-grow:1;
+
+    flex:1 1 auto;
+    min-height:0;
+
     background:#111;
     border:1px solid #333;
+
     -webkit-overflow-scrolling:touch;
 }
 
@@ -334,14 +383,16 @@ th:nth-child(5),td:nth-child(5){width:25%}
     margin-top:10px;
     padding-top:10px;
     border-top:1px solid #333;
-    flex-grow:1;
-    overflow-y:auto;
+
+    flex:0 0 auto;
+
+    overflow:visible;
 }
 
 .early-results{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:6px 10px;
+    gap:8px 10px;
 }
 
 .early-result{
@@ -389,9 +440,12 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
 .home-footer{
     text-align:center;
-    margin-top:auto;
+
+    margin-top:12px;
     padding-top:10px;
+
     border-top:1px solid #333;
+
     flex-shrink:0;
 }
 
@@ -452,15 +506,21 @@ th:nth-child(5),td:nth-child(5){width:25%}
     width:100%!important;
     max-width:100%!important;
     align-self:stretch!important;
+
     color:#c8c8c8!important;
     font-size:15px;
     line-height:1.6;
+
     text-align:right!important;
     direction:rtl;
+
     margin:0;
     padding:0;
+
     overflow-y:auto;
-    flex-grow:1;
+
+    flex:1 1 auto;
+    min-height:0;
 }
 
 .info-text p{
@@ -479,10 +539,81 @@ th:nth-child(5),td:nth-child(5){width:25%}
 }
 
 .info-bottom{
-    margin-top:auto;
+    margin-top:12px;
     width:100%;
     flex-shrink:0;
 }
+
+
+/* =========================
+   الشاشات الصغيرة
+========================= */
+
+@media (max-height:650px){
+
+    body{
+        padding:6px;
+    }
+
+    .container{
+        height:96vh;
+        max-height:96vh;
+        padding:10px 12px;
+        border-radius:20px;
+    }
+
+    .header{
+        margin-bottom:8px;
+    }
+
+    .group-name{
+        font-size:20px;
+    }
+
+    .subtitle{
+        font-size:17px;
+    }
+
+    label{
+        font-size:15px;
+    }
+
+    input{
+        height:42px;
+        margin-bottom:8px;
+        font-size:19px;
+    }
+
+    button{
+        min-height:42px;
+        font-size:17px;
+    }
+
+    .card{
+        min-height:78px;
+        padding:8px 6px;
+    }
+
+    .card .label{
+        font-size:14px;
+    }
+
+    .card .value{
+        font-size:18px;
+    }
+
+    .actions{
+        margin-top:8px;
+        padding-top:8px;
+        gap:6px;
+    }
+
+}
+
+
+/* =========================
+   منع التكبير
+========================= */
 
 </style>
 </head>
@@ -505,7 +636,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
         </div>
 
         <div class="subtitle">
-         حاسبة القروض البنكية
+            حاسبة القروض البنكية
         </div>
 
     </div>
@@ -554,16 +685,25 @@ th:nth-child(5),td:nth-child(5){width:25%}
         إدخال جديد
     </button>
 
-    <!-- مكان بانر إعلانات Google AdMob المناسب -->
-    <div style="margin-top: 10px; text-align: center;">
+
+    <!-- =========================
+         إعلان Google
+    ========================= -->
+
+    <div style="margin-top:10px; text-align:center;">
+
         <ins class="adsbygoogle"
              style="display:inline-block;width:320px;height:50px"
              data-ad-client="ca-app-pub-4957378617452523"
-             data-ad-slot="4775301562"></ins>
+             data-ad-slot="4775301562">
+        </ins>
+
         <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
+            (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
+
     </div>
+
 
     <div class="home-footer">
 
@@ -647,7 +787,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
      3 - جدول الأقساط
 ========================= -->
 
-<section id="schedulePage" class="hidden" style="height:100%; display:flex; flex-direction:column;">
+<section id="schedulePage" class="hidden">
 
     <h2 class="panel-title">
         جدول الأقساط
@@ -672,7 +812,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
      4 - السداد المبكر
 ========================= -->
 
-<section id="earlyPage" class="hidden" style="height:100%; display:flex; flex-direction:column;">
+<section id="earlyPage" class="hidden">
 
     <h2 class="panel-title">
         السداد المبكر
@@ -716,7 +856,6 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
             </div>
 
-
             <div class="early-result stacked">
 
                 <div class="result-label">
@@ -726,7 +865,6 @@ th:nth-child(5),td:nth-child(5){width:25%}
                 <span id="principalPaid">-</span>
 
             </div>
-
 
             <div class="early-result stacked">
 
@@ -738,30 +876,25 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
             </div>
 
-
             <div class="early-result">
                 رسوم السداد المبكر:
                 <span id="earlyFeeValue">-</span>
             </div>
-
 
             <div class="early-result">
                 مبلغ الإغلاق:
                 <span id="closingAmount">-</span>
             </div>
 
-
             <div class="early-result">
                 الفائدة المستقبلية:
                 <span id="futureInterest">-</span>
             </div>
 
-
             <div class="early-result">
                 تكلفة التمويل الفعلية:
                 <span id="actualFinancingCost">-</span>
             </div>
-
 
             <div class="early-result full-width">
                 التوفير المتوقع:
@@ -771,7 +904,6 @@ th:nth-child(5),td:nth-child(5){width:25%}
         </div>
 
     </div>
-
 
     <div class="actions">
 
@@ -1117,13 +1249,12 @@ function backToInput(){
 
 
 /* =========================
-   إدخال جديد - مسح كل البيانات
+   إدخال جديد
 ========================= */
 
 function newEntry(){
 
     loan={};
-
 
     [
         "principal",
@@ -1405,12 +1536,6 @@ function calculateEarly(){
 
     const paidAmount=
         loan.payment*paid;
-
-
-    const totalLoanCost=
-        paidAmount+
-        balance+
-        fee;
 
 
     const principalPaid=
