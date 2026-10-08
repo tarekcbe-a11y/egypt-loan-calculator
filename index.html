@@ -12,7 +12,9 @@ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 <title>حاسبة القروض البنكية</title>
 
 <!-- Google AdMob -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4957378617452523~7270351395" crossorigin="anonymous"></script>
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-4957378617452523~7270351395"
+crossorigin="anonymous"></script>
 
 <style>
 
@@ -79,7 +81,7 @@ body{
     font-size:21px;
     font-weight:900;
     margin:0 0 3px;
-    letter-spacing:0.5px;
+    letter-spacing:.5px;
 }
 
 .subtitle{
@@ -99,7 +101,7 @@ body{
 }
 
 /* =========================
-   المدخلات وإخفاء الوحدة عند الكتابة
+   المدخلات
 ========================= */
 
 label{
@@ -156,15 +158,15 @@ input:focus{
     font-size:13px;
     font-weight:600;
     pointer-events:none;
-    transition: opacity 0.2s ease;
+    transition:opacity .2s ease;
 }
 
-.has-value .input-unit {
+.has-value .input-unit{
     opacity:0;
     visibility:hidden;
 }
 
-.input-with-unit input {
+.input-with-unit input{
     padding-right:55px;
 }
 
@@ -241,41 +243,41 @@ button.outline{
 .results-grid{
     display:grid;
     grid-template-columns:1.1fr 1fr;
-    grid-template-rows:repeat(4,1fr);
-    gap:8px;
-    flex-grow:1;
-    margin-bottom:10px;
+    grid-template-rows:repeat(4,54px);
+    gap:6px;
+    flex-grow:0;
+    margin-bottom:8px;
 }
 
 .result-box-label{
     background:#151515;
     border:2px solid #303030;
     border-radius:12px;
-    padding:8px;
+    padding:6px;
     text-align:center;
     color:#bbb;
-    font-size:15px;
+    font-size:14px;
     font-weight:700;
     display:flex;
     align-items:center;
     justify-content:center;
-    height:100%;
+    height:54px;
 }
 
 .result-box-value{
     background:#151515;
     border:2px solid #303030;
     border-radius:12px;
-    padding:8px;
+    padding:6px;
     text-align:center;
     color:#d4af37;
-    font-size:18px;
+    font-size:17px;
     font-weight:800;
     direction:ltr;
     display:flex;
     align-items:center;
     justify-content:center;
-    height:100%;
+    height:54px;
 }
 
 .actions{
@@ -288,12 +290,12 @@ button.outline{
 }
 
 .results-actions{
-    gap:6px;
+    gap:5px;
     margin-top:2px;
 }
 
 .results-actions button{
-    min-height:42px;
+    min-height:40px;
     margin-top:0;
     font-size:15px;
     border-radius:12px;
@@ -373,7 +375,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
     font-size:13px;
     line-height:1.2;
     text-align:right;
-    padding:4px 4px;
+    padding:4px;
     min-height:26px;
     display:flex;
     align-items:center;
@@ -394,13 +396,12 @@ th:nth-child(5),td:nth-child(5){width:25%}
     flex-direction:row;
     align-items:center;
     justify-content:space-between;
-    padding:4px 4px;
+    padding:4px;
 }
 
 .early-result.stacked .result-label{
     color:#aaa;
     font-size:13px;
-    margin-bottom:0;
 }
 
 .early-result.stacked span{
@@ -409,6 +410,112 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
 .early-result.full-width{
     grid-column:1 / -1;
+}
+
+/* الجزء التوضيحي في سطر النتائج */
+.early-result small{
+    font-size:10px;
+    color:#888;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+/* =========================
+   السداد الجزئي
+========================= */
+
+.partial-page{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.partial-inputs{
+    flex-shrink:0;
+}
+
+.partial-options{
+    margin-top:5px;
+    padding:8px 10px;
+    background:#111;
+    border:1px solid #333;
+    border-radius:12px;
+}
+
+.partial-options-title{
+    color:#aaa;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:7px;
+    text-align:right;
+}
+
+.partial-option{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:8px;
+    color:#ddd;
+    font-size:13px;
+    margin:6px 0;
+}
+
+.partial-option input{
+    width:18px;
+    height:18px;
+    margin:0;
+    padding:0;
+    accent-color:#d4af37;
+}
+
+/* صفحة نتائج السداد الجزئي */
+
+.partial-results-page{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.partial-results{
+    margin-top:6px;
+    padding-top:4px;
+    border-top:1px solid #333;
+    overflow-y:auto;
+    flex-grow:1;
+    -webkit-overflow-scrolling:touch;
+}
+
+.partial-result{
+    min-height:31px;
+    padding:5px 4px;
+    border-bottom:1px solid #1f1f1f;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color:#aaa;
+    font-size:13px;
+}
+
+.partial-result span{
+    color:#d4af37;
+    font-weight:800;
+    direction:ltr;
+    margin-right:8px;
+}
+
+.partial-result.highlight{
+    color:#ddd;
+    font-weight:800;
+}
+
+.partial-result.highlight span{
+    font-size:15px;
+}
+
+.partial-buttons{
+    flex-shrink:0;
 }
 
 /* =========================
@@ -522,48 +629,62 @@ th:nth-child(5),td:nth-child(5){width:25%}
      1 - الصفحة الرئيسية
 ========================= -->
 
-<section id="inputPage" style="height:100%; display:flex; flex-direction:column; justify-content:space-between;">
+<section id="inputPage"
+style="height:100%;display:flex;flex-direction:column;justify-content:space-between;">
 
     <div class="header">
         <div class="group-name">جروب عملاء البنوك المصرية</div>
         <div class="subtitle">حاسبة القروض البنكية</div>
     </div>
 
-    <div style="flex-grow:1; display:flex; flex-direction:column; justify-content:center;">
+    <div style="flex-grow:1;display:flex;flex-direction:column;justify-content:center;">
+
         <label for="principal">قيمة القرض</label>
 
         <div class="input-group-wrapper input-with-unit" id="wrap-principal">
+
             <span class="input-unit">جنيه</span>
+
             <input id="principal"
                    type="text"
                    inputmode="numeric"
                    autocomplete="off"
-                   oninput="formatThousands(this, 'wrap-principal')">
+                   oninput="formatThousands(this,'wrap-principal')">
+
             <span class="input-icon">💵</span>
+
         </div>
 
         <label for="interest">نسبة الفائدة السنوية %</label>
 
         <div class="input-group-wrapper input-with-unit" id="wrap-interest">
+
             <span class="input-unit">%</span>
+
             <input id="interest"
                    type="text"
                    inputmode="decimal"
                    autocomplete="off"
-                   oninput="checkUnitState(this, 'wrap-interest')">
+                   oninput="checkUnitState(this,'wrap-interest')">
+
             <span class="input-icon">％</span>
+
         </div>
 
         <label for="years">مدة القرض بالسنوات</label>
 
         <div class="input-group-wrapper input-with-unit" id="wrap-years">
+
             <span class="input-unit">سنة</span>
+
             <input id="years"
                    type="text"
                    inputmode="decimal"
                    autocomplete="off"
-                   oninput="checkUnitState(this, 'wrap-years')">
+                   oninput="checkUnitState(this,'wrap-years')">
+
             <span class="input-icon">📅</span>
+
         </div>
 
         <button onclick="calculateLoan()">
@@ -599,9 +720,17 @@ th:nth-child(5),td:nth-child(5){width:25%}
         </div>
 
         <div class="footer-links">
-            <button onclick="showPrivacy()">سياسة الخصوصية</button>
+
+            <button onclick="showPrivacy()">
+                سياسة الخصوصية
+            </button>
+
             <span class="separator">|</span>
-            <button onclick="showGuide()">دليل حاسبة القروض</button>
+
+            <button onclick="showGuide()">
+                دليل حاسبة القروض
+            </button>
+
         </div>
 
     </div>
@@ -609,11 +738,12 @@ th:nth-child(5),td:nth-child(5){width:25%}
 </section>
 
 <!-- =========================
-     2 - النتائج
-     لم يتم تعديلها
+     2 - النتائج الرئيسية
 ========================= -->
 
-<section id="resultsPage" class="hidden" style="height:100%; display:flex; flex-direction:column;">
+<section id="resultsPage"
+class="hidden"
+style="height:100%;display:flex;flex-direction:column;">
 
     <h2 class="panel-title">نتائج القرض</h2>
 
@@ -643,16 +773,22 @@ th:nth-child(5),td:nth-child(5){width:25%}
             السداد المبكر
         </button>
 
-        <button class="outline" onclick="backToInput()">
+        <button onclick="showPartial()">
+            السداد الجزئي
+        </button>
+
+        <button class="new-entry-button" onclick="backToInput()">
             تعديل بيانات القرض
         </button>
 
     </div>
 
     <div class="home-footer" style="margin-top:auto;">
+
         <div class="developer-bottom">
             إعداد أ/ طارق متولى
         </div>
+
     </div>
 
 </section>
@@ -661,16 +797,20 @@ th:nth-child(5),td:nth-child(5){width:25%}
      3 - جدول الأقساط
 ========================= -->
 
-<section id="schedulePage" class="hidden" style="height:100%;display:flex;flex-direction:column;">
+<section id="schedulePage"
+class="hidden"
+style="height:100%;display:flex;flex-direction:column;">
 
     <h2 class="panel-title">جدول الأقساط</h2>
 
     <div id="schedule" class="schedule-wrap"></div>
 
     <div class="actions">
+
         <button class="outline" onclick="showResults()">
             ← العودة إلى نتائج القرض
         </button>
+
     </div>
 
 </section>
@@ -679,7 +819,9 @@ th:nth-child(5),td:nth-child(5){width:25%}
      4 - السداد المبكر
 ========================= -->
 
-<section id="earlyPage" class="hidden" style="height:100%;display:flex;flex-direction:column;">
+<section id="earlyPage"
+class="hidden"
+style="height:100%;display:flex;flex-direction:column;">
 
     <h2 class="panel-title">السداد المبكر</h2>
 
@@ -697,7 +839,8 @@ th:nth-child(5),td:nth-child(5){width:25%}
            autocomplete="off"
            placeholder="نسبة رسوم السداد المبكر %">
 
-    <button class="early-calc-button" onclick="calculateEarly()">
+    <button class="early-calc-button"
+            onclick="calculateEarly()">
         احسب السداد المبكر
     </button>
 
@@ -720,13 +863,30 @@ th:nth-child(5),td:nth-child(5){width:25%}
                 <span id="remainingPrincipal">-</span>
             </div>
 
+            <!-- الفائدة المدفوعة حتى الآن -->
+            <div class="early-result">
+                <span>الفائدة المدفوعة حتى الآن</span>
+                <span id="interestPaidSoFar">-</span>
+            </div>
+
+            <!-- رسوم السداد المبكر -->
             <div class="early-result">
                 <span>رسوم السداد المبكر</span>
                 <span id="earlyFeeValue">-</span>
             </div>
 
+            <!-- تكلفة التمويل الكلية -->
             <div class="early-result">
-                <span>مبلغ الإغلاق</span>
+                <span>تكلفة التمويل الكلية</span>
+                <span id="actualFinancingCost">-</span>
+            </div>
+
+            <!-- مبلغ الإغلاق -->
+            <div class="early-result">
+                <span>
+                    مبلغ الإغلاق
+                    <small>(أصل القرض المتبقي + رسوم السداد المبكر)</small>
+                </span>
                 <span id="closingAmount">-</span>
             </div>
 
@@ -735,13 +895,12 @@ th:nth-child(5),td:nth-child(5){width:25%}
                 <span id="futureInterest">-</span>
             </div>
 
-            <div class="early-result">
-                <span>تكلفة التمويل الفعلية</span>
-                <span id="actualFinancingCost">-</span>
-            </div>
-
+            <!-- التوفير المتوقع -->
             <div class="early-result full-width">
-                <span>التوفير المتوقع</span>
+                <span>
+                    التوفير المتوقع
+                    <small>(الفائدة المستقبلية − رسوم السداد المبكر)</small>
+                </span>
                 <span id="expectedSaving">-</span>
             </div>
 
@@ -760,12 +919,222 @@ th:nth-child(5),td:nth-child(5){width:25%}
 </section>
 
 <!-- =========================
-     5 - سياسة الخصوصية
+     5 - السداد الجزئي
+     صفحة إدخال البيانات فقط
 ========================= -->
 
-<section id="privacyPage" class="hidden info-page">
+<section id="partialPage"
+class="hidden partial-page">
 
-    <h2 class="panel-title">سياسة الخصوصية</h2>
+    <h2 class="panel-title">السداد الجزئي</h2>
+
+    <div class="partial-inputs">
+
+        <label for="partialPaidInstallments">
+            عدد الأقساط التي تم سدادها
+        </label>
+
+        <input id="partialPaidInstallments"
+               class="early-input"
+               type="text"
+               inputmode="numeric"
+               autocomplete="off"
+               placeholder="مثال: 12">
+
+        <label for="partialAmount">
+            مبلغ السداد الجزئي
+        </label>
+
+        <input id="partialAmount"
+               class="early-input"
+               type="text"
+               inputmode="numeric"
+               autocomplete="off"
+               placeholder="أدخل مبلغ السداد الجزئي">
+
+        <label for="partialCommission">
+            نسبة عمولة السداد الجزئي %
+        </label>
+
+        <input id="partialCommission"
+               class="early-input"
+               type="text"
+               inputmode="decimal"
+               autocomplete="off"
+               placeholder="مثال: 1">
+
+        <div class="partial-options">
+
+            <div class="partial-options-title">
+                ماذا تريد بعد السداد الجزئي؟
+            </div>
+
+            <label class="partial-option">
+
+                <input type="radio"
+                       name="partialMode"
+                       value="payment"
+                       checked>
+
+                <span>تقليل قيمة القسط</span>
+
+            </label>
+
+            <label class="partial-option">
+
+                <input type="radio"
+                       name="partialMode"
+                       value="term">
+
+                <span>تقليل مدة القرض</span>
+
+            </label>
+
+        </div>
+
+        <button class="early-calc-button"
+                onclick="calculatePartial()">
+            احسب السداد الجزئي
+        </button>
+
+    </div>
+
+    <div class="partial-buttons"
+         style="margin-top:auto;">
+
+        <button class="outline"
+                onclick="showResults()">
+            ← العودة إلى نتائج القرض
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     6 - نتائج السداد الجزئي
+========================= -->
+
+<section id="partialResultsPage"
+class="hidden partial-results-page">
+
+    <h2 class="panel-title">
+        نتائج السداد الجزئي
+    </h2>
+
+    <div class="partial-results">
+
+        <div class="partial-result">
+            <span>الرصيد قبل السداد الجزئي</span>
+            <span id="partialBalanceBefore">-</span>
+        </div>
+
+        <div class="partial-result">
+            <span>مبلغ السداد الجزئي</span>
+            <span id="partialAmountResult">-</span>
+        </div>
+
+        <div class="partial-result">
+            <span>عمولة السداد الجزئي</span>
+            <span id="partialCommissionResult">-</span>
+        </div>
+
+        <div class="partial-result highlight">
+            <span>صافي السداد الجزئي لأصل القرض</span>
+            <span id="partialNetAmountResult">-</span>
+        </div>
+
+        <div class="partial-result highlight">
+            <span>الرصيد بعد السداد الجزئي</span>
+            <span id="partialBalanceAfter">-</span>
+        </div>
+
+        <div class="partial-result">
+            <span>القسط الجديد</span>
+            <span id="partialNewPayment">-</span>
+        </div>
+
+        <div class="partial-result">
+            <span>عدد الأقساط الجديدة</span>
+            <span id="partialNewMonths">-</span>
+        </div>
+
+        <div class="partial-result">
+            <span>إجمالي المدفوع بعد السداد</span>
+            <span id="partialTotalAfter">-</span>
+        </div>
+
+        <div class="partial-result">
+            <span>إجمالي الفائدة بعد السداد</span>
+            <span id="partialInterestAfter">-</span>
+        </div>
+
+        <div class="partial-result highlight">
+            <span>التوفير في الفائدة</span>
+            <span id="partialSaving">-</span>
+        </div>
+
+        <div class="partial-result highlight">
+            <span>صافي التوفير بعد العمولة</span>
+            <span id="partialNetSaving">-</span>
+        </div>
+
+    </div>
+
+    <div class="partial-buttons">
+
+        <button id="newPartialScheduleButton"
+                onclick="showPartialSchedule()"
+                disabled
+                style="opacity:.45;">
+            جدول الأقساط الجديدة
+        </button>
+
+        <button class="outline"
+                onclick="showPartial()">
+            ← العودة إلى السداد الجزئي
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     7 - جدول الأقساط الجديدة
+========================= -->
+
+<section id="partialSchedulePage"
+class="hidden"
+style="height:100%;display:flex;flex-direction:column;">
+
+    <h2 class="panel-title">
+        جدول الأقساط الجديدة
+    </h2>
+
+    <div id="partialSchedule"
+         class="schedule-wrap"></div>
+
+    <div class="actions">
+
+        <button class="outline"
+                onclick="showPartial()">
+            ← العودة إلى السداد الجزئي
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     8 - سياسة الخصوصية
+========================= -->
+
+<section id="privacyPage"
+class="hidden info-page">
+
+    <h2 class="panel-title">
+        سياسة الخصوصية
+    </h2>
 
     <div class="info-text">
 
@@ -794,7 +1163,8 @@ th:nth-child(5),td:nth-child(5){width:25%}
 
         <div class="actions">
 
-            <button class="outline" onclick="backToInput()">
+            <button class="outline"
+                    onclick="backToInput()">
                 ← العودة إلى الصفحة الرئيسية
             </button>
 
@@ -805,12 +1175,15 @@ th:nth-child(5),td:nth-child(5){width:25%}
 </section>
 
 <!-- =========================
-     6 - دليل الحاسبة
+     9 - دليل الحاسبة
 ========================= -->
 
-<section id="guidePage" class="hidden info-page">
+<section id="guidePage"
+class="hidden info-page">
 
-    <h2 class="panel-title">دليل حاسبة القروض</h2>
+    <h2 class="panel-title">
+        دليل حاسبة القروض
+    </h2>
 
     <div class="info-text">
 
@@ -826,7 +1199,7 @@ th:nth-child(5),td:nth-child(5){width:25%}
             وإجمالي الفائدة،
             وعدد الأقساط.
             ويمكنك الاطلاع على جدول الأقساط
-            أو استخدام السداد المبكر.
+            أو استخدام السداد المبكر أو السداد الجزئي.
         </p>
 
         <p>
@@ -835,13 +1208,21 @@ th:nth-child(5),td:nth-child(5){width:25%}
             والتكلفة والتوفير المتوقع.
         </p>
 
+        <p>
+            في السداد الجزئي أدخل عدد الأقساط التي تم سدادها،
+            ومبلغ السداد الجزئي، ونسبة العمولة،
+            ثم اختر بين تقليل قيمة القسط أو تقليل مدة القرض.
+            يتم خصم العمولة من مبلغ السداد قبل تخفيض أصل القرض.
+        </p>
+
     </div>
 
     <div class="info-bottom">
 
         <div class="actions">
 
-            <button class="outline" onclick="backToInput()">
+            <button class="outline"
+                    onclick="backToInput()">
                 ← العودة إلى الصفحة الرئيسية
             </button>
 
@@ -856,16 +1237,17 @@ th:nth-child(5),td:nth-child(5){width:25%}
 <script>
 
 let loan={};
+let partialLoan={};
 
 /* =========================
-   إدارة إخفاء/إظهار الوحدة
+   إدارة الوحدات
 ========================= */
 
-function checkUnitState(inputEl, wrapperId){
+function checkUnitState(inputEl,wrapperId){
 
-    const wrapper = document.getElementById(wrapperId);
+    const wrapper=document.getElementById(wrapperId);
 
-    if(inputEl.value && inputEl.value.trim() !== ""){
+    if(inputEl.value && inputEl.value.trim()!==""){
         wrapper.classList.add("has-value");
     }else{
         wrapper.classList.remove("has-value");
@@ -873,9 +1255,9 @@ function checkUnitState(inputEl, wrapperId){
 
 }
 
-function formatThousands(el, wrapperId){
+function formatThousands(el,wrapperId){
 
-    checkUnitState(el, wrapperId);
+    checkUnitState(el,wrapperId);
 
     const raw=String(el.value||"")
         .replace(/[^0-9٠-٩]/g,"");
@@ -932,6 +1314,10 @@ function fmt(n){
 
 }
 
+/* =========================
+   إخفاء كل الصفحات
+========================= */
+
 function hideAll(){
 
     [
@@ -939,6 +1325,9 @@ function hideAll(){
         "resultsPage",
         "schedulePage",
         "earlyPage",
+        "partialPage",
+        "partialResultsPage",
+        "partialSchedulePage",
         "privacyPage",
         "guidePage"
     ].forEach(id=>{
@@ -1035,16 +1424,24 @@ function backToInput(){
 
 }
 
+/* =========================
+   إدخال جديد
+========================= */
+
 function newEntry(){
 
     loan={};
+    partialLoan={};
 
     [
         "principal",
         "interest",
         "years",
         "paidInstallments",
-        "earlyFee"
+        "earlyFee",
+        "partialPaidInstallments",
+        "partialAmount",
+        "partialCommission"
     ].forEach(id=>{
 
         document.getElementById(id).value="";
@@ -1070,11 +1467,23 @@ function newEntry(){
         "originalPrincipal",
         "principalPaid",
         "remainingPrincipal",
+        "interestPaidSoFar",
         "earlyFeeValue",
+        "actualFinancingCost",
         "closingAmount",
         "futureInterest",
-        "actualFinancingCost",
-        "expectedSaving"
+        "expectedSaving",
+        "partialBalanceBefore",
+        "partialAmountResult",
+        "partialCommissionResult",
+        "partialNetAmountResult",
+        "partialBalanceAfter",
+        "partialNewPayment",
+        "partialNewMonths",
+        "partialTotalAfter",
+        "partialInterestAfter",
+        "partialSaving",
+        "partialNetSaving"
     ].forEach(id=>{
 
         document.getElementById(id)
@@ -1084,6 +1493,21 @@ function newEntry(){
 
     document.getElementById("schedule")
         .innerHTML="";
+
+    document.getElementById("partialSchedule")
+        .innerHTML="";
+
+    const partialButton=
+        document.getElementById(
+            "newPartialScheduleButton"
+        );
+
+    partialButton.disabled=true;
+    partialButton.style.opacity=".45";
+
+    document.querySelector(
+        'input[name="partialMode"][value="payment"]'
+    ).checked=true;
 
     hideAll();
 
@@ -1111,7 +1535,7 @@ function showGuide(){
 }
 
 /* =========================
-   جدول الأقساط والسداد المبكر
+   جدول الأقساط الأصلي
 ========================= */
 
 function showSchedule(){
@@ -1136,17 +1560,28 @@ function showSchedule(){
 
         const interest=balance*loan.r;
 
-        let principalPaid=loan.payment-interest;
+        let principalPaid=
+            loan.payment-interest;
 
         if(i===loan.months)
             principalPaid=balance;
 
-        balance=Math.max(0,balance-principalPaid);
+        balance=
+            Math.max(
+                0,
+                balance-principalPaid
+            );
 
         html+=`
             <tr>
                 <td>${i}</td>
-                <td>${fmt(i===loan.months ? principalPaid+interest : loan.payment)}</td>
+                <td>
+                    ${fmt(
+                        i===loan.months
+                        ? principalPaid+interest
+                        : loan.payment
+                    )}
+                </td>
                 <td>${fmt(interest)}</td>
                 <td>${fmt(principalPaid)}</td>
                 <td>${fmt(balance)}</td>
@@ -1155,9 +1590,13 @@ function showSchedule(){
 
     }
 
-    html+=`</tbody></table>`;
+    html+=`
+            </tbody>
+        </table>
+    `;
 
-    document.getElementById("schedule").innerHTML=html;
+    document.getElementById("schedule")
+        .innerHTML=html;
 
     hideAll();
 
@@ -1165,6 +1604,10 @@ function showSchedule(){
         .classList.remove("hidden");
 
 }
+
+/* =========================
+   السداد المبكر
+========================= */
 
 function showEarly(){
 
@@ -1179,7 +1622,9 @@ function calculateEarly(){
 
     const paid=parseInt(
         normalizeNumber(
-            document.getElementById("paidInstallments").value
+            document.getElementById(
+                "paidInstallments"
+            ).value
         ),
         10
     );
@@ -1193,7 +1638,10 @@ function calculateEarly(){
         !(feeRate>=0)
     ){
 
-        alert("أدخل عدد أقساط صحيحًا بين صفر وأقل من إجمالي الأقساط");
+        alert(
+            "أدخل عدد أقساط صحيحًا بين صفر وأقل من إجمالي الأقساط"
+        );
+
         return;
 
     }
@@ -1202,42 +1650,739 @@ function calculateEarly(){
 
     if(loan.r===0){
 
-        balance=loan.p-loan.payment*paid;
+        balance=
+            loan.p-
+            loan.payment*paid;
 
     }else{
 
         balance=Math.max(
             0,
             loan.p*Math.pow(1+loan.r,paid)-
-            loan.payment*((Math.pow(1+loan.r,paid)-1)/loan.r)
+            loan.payment*
+            (
+                (Math.pow(1+loan.r,paid)-1)/
+                loan.r
+            )
         );
 
     }
 
-    const remainingPayments=loan.months-paid;
-    const futurePayments=loan.payment*remainingPayments;
-    const futureInterest=Math.max(0,futurePayments-balance);
-    const fee=balance*feeRate;
-    const closing=balance+fee;
-    const saving=Math.max(0,futureInterest-fee);
-    const paidAmount=loan.payment*paid;
-    const principalPaid=Math.max(0,loan.p-balance);
-    const actualFinancingCost=Math.max(0,paidAmount-principalPaid);
+    const remainingPayments=
+        loan.months-paid;
 
-    document.getElementById("originalPrincipal").textContent=fmt(loan.p);
-    document.getElementById("principalPaid").textContent=fmt(principalPaid);
-    document.getElementById("remainingPrincipal").textContent=fmt(balance);
-    document.getElementById("earlyFeeValue").textContent=fmt(fee);
-    document.getElementById("closingAmount").textContent=fmt(closing);
-    document.getElementById("futureInterest").textContent=fmt(futureInterest);
-    document.getElementById("actualFinancingCost").textContent=fmt(actualFinancingCost);
-    document.getElementById("expectedSaving").textContent=fmt(saving);
+    const futurePayments=
+        loan.payment*remainingPayments;
+
+    const futureInterest=
+        Math.max(
+            0,
+            futurePayments-balance
+        );
+
+    const fee=
+        balance*feeRate;
+
+    const closing=
+        balance+fee;
+
+    const saving=
+        Math.max(
+            0,
+            futureInterest-fee
+        );
+
+    const paidAmount=
+        loan.payment*paid;
+
+    const principalPaid=
+        Math.max(
+            0,
+            loan.p-balance
+        );
+
+    /* =========================
+       الفائدة المدفوعة حتى الآن
+    ========================= */
+
+    const interestPaidSoFar=
+        Math.max(
+            0,
+            paidAmount-principalPaid
+        );
+
+    /* =========================
+       تكلفة التمويل الكلية
+       = الفائدة المدفوعة حتى الآن
+       + رسوم السداد المبكر
+    ========================= */
+
+    const totalFinancingCost=
+        interestPaidSoFar+fee;
+
+    document.getElementById(
+        "originalPrincipal"
+    ).textContent=fmt(loan.p);
+
+    document.getElementById(
+        "principalPaid"
+    ).textContent=fmt(principalPaid);
+
+    document.getElementById(
+        "remainingPrincipal"
+    ).textContent=fmt(balance);
+
+    document.getElementById(
+        "interestPaidSoFar"
+    ).textContent=fmt(
+        interestPaidSoFar
+    );
+
+    document.getElementById(
+        "earlyFeeValue"
+    ).textContent=fmt(fee);
+
+    document.getElementById(
+        "actualFinancingCost"
+    ).textContent=fmt(
+        totalFinancingCost
+    );
+
+    document.getElementById(
+        "closingAmount"
+    ).textContent=fmt(closing);
+
+    document.getElementById(
+        "futureInterest"
+    ).textContent=fmt(futureInterest);
+
+    document.getElementById(
+        "expectedSaving"
+    ).textContent=fmt(saving);
 
 }
 
-document.addEventListener("gesturestart",function(e){
-    e.preventDefault();
-});
+/* =========================
+   السداد الجزئي
+========================= */
+
+function showPartial(){
+
+    hideAll();
+
+    document.getElementById("partialPage")
+        .classList.remove("hidden");
+
+}
+
+function getBalanceAfterPayments(paid){
+
+    if(loan.r===0){
+
+        return Math.max(
+            0,
+            loan.p-(loan.payment*paid)
+        );
+
+    }
+
+    return Math.max(
+        0,
+        loan.p*Math.pow(1+loan.r,paid)-
+        loan.payment*
+        (
+            (Math.pow(1+loan.r,paid)-1)/
+            loan.r
+        )
+    );
+
+}
+
+function calculatePartial(){
+
+    if(!loan.p){
+
+        alert("احسب القرض أولًا");
+        return;
+
+    }
+
+    const paid=parseInt(
+        normalizeNumber(
+            document.getElementById(
+                "partialPaidInstallments"
+            ).value
+        ),
+        10
+    );
+
+    const amount=parseFloat(
+        normalizeNumber(
+            document.getElementById(
+                "partialAmount"
+            ).value
+        )
+    );
+
+    const commissionRate=parseFloat(
+        normalizeNumber(
+            document.getElementById(
+                "partialCommission"
+            ).value
+        )
+    );
+
+    /* عدد الأقساط */
+
+    if(
+        !Number.isInteger(paid) ||
+        paid<0 ||
+        paid>=loan.months
+    ){
+
+        alert(
+            "أدخل عدد أقساط صحيحًا بين صفر وأقل من إجمالي الأقساط"
+        );
+
+        return;
+
+    }
+
+    /* مبلغ السداد */
+
+    if(!(amount>0)){
+
+        alert(
+            "أدخل مبلغ السداد الجزئي بشكل صحيح"
+        );
+
+        return;
+
+    }
+
+    /* العمولة */
+
+    if(
+        !Number.isFinite(commissionRate) ||
+        commissionRate<0 ||
+        commissionRate>=100
+    ){
+
+        alert(
+            "أدخل نسبة عمولة السداد الجزئي بشكل صحيح"
+        );
+
+        return;
+
+    }
+
+    /* الرصيد قبل السداد */
+
+    const balanceBefore=
+        getBalanceAfterPayments(paid);
+
+    /* العمولة */
+
+    const commission=
+        amount*commissionRate/100;
+
+    /* صافي المبلغ الذي يخفض أصل القرض */
+
+    const netPartialAmount=
+        amount-commission;
+
+    if(!(netPartialAmount>0)){
+
+        alert(
+            "صافي السداد الجزئي لأصل القرض يجب أن يكون أكبر من صفر"
+        );
+
+        return;
+
+    }
+
+    if(netPartialAmount>=balanceBefore){
+
+        alert(
+            "صافي السداد الجزئي لأصل القرض يجب أن يكون أقل من أصل القرض المتبقي"
+        );
+
+        return;
+
+    }
+
+    /* الرصيد الجديد */
+
+    const balanceAfter=
+        balanceBefore-netPartialAmount;
+
+    /* المدة المتبقية الأصلية */
+
+    const remainingOriginalMonths=
+        loan.months-paid;
+
+    /* الطريقة المختارة */
+
+    const mode=
+        document.querySelector(
+            'input[name="partialMode"]:checked'
+        ).value;
+
+    let newPayment;
+    let newMonths;
+    let totalAfter;
+    let interestAfter;
+    let schedule=[];
+
+    /* =========================
+       تقليل قيمة القسط
+    ========================= */
+
+    if(mode==="payment"){
+
+        newMonths=
+            remainingOriginalMonths;
+
+        if(loan.r===0){
+
+            newPayment=
+                balanceAfter/newMonths;
+
+        }else{
+
+            newPayment=
+                (
+                    balanceAfter*loan.r
+                )/
+                (
+                    1-
+                    Math.pow(
+                        1+loan.r,
+                        -newMonths
+                    )
+                );
+
+        }
+
+        let balance=
+            balanceAfter;
+
+        let total=0;
+
+        for(
+            let i=1;
+            i<=newMonths;
+            i++
+        ){
+
+            const interest=
+                balance*loan.r;
+
+            let principalPart=
+                newPayment-interest;
+
+            let installment=
+                newPayment;
+
+            if(i===newMonths){
+
+                principalPart=
+                    balance;
+
+                installment=
+                    principalPart+interest;
+
+            }
+
+            balance=
+                Math.max(
+                    0,
+                    balance-principalPart
+                );
+
+            total+=installment;
+
+            schedule.push({
+
+                number:i,
+                payment:installment,
+                interest:interest,
+                principal:principalPart,
+                balance:balance
+
+            });
+
+        }
+
+        totalAfter=total;
+
+        interestAfter=
+            Math.max(
+                0,
+                totalAfter-balanceAfter
+            );
+
+    }
+
+    /* =========================
+       تقليل مدة القرض
+    ========================= */
+
+    else{
+
+        newPayment=
+            loan.payment;
+
+        if(loan.r===0){
+
+            newMonths=
+                Math.ceil(
+                    balanceAfter/newPayment
+                );
+
+        }else{
+
+            const monthlyInterest=
+                balanceAfter*loan.r;
+
+            if(
+                newPayment<=monthlyInterest
+            ){
+
+                alert(
+                    "لا يمكن تقليل مدة القرض بهذا القسط لأن القسط الحالي لا يغطي الفائدة الشهرية على الرصيد الجديد."
+                );
+
+                return;
+
+            }
+
+            newMonths=
+                Math.ceil(
+                    -Math.log(
+                        1-
+                        (
+                            balanceAfter*loan.r/
+                            newPayment
+                        )
+                    )/
+                    Math.log(1+loan.r)
+                );
+
+        }
+
+        let balance=
+            balanceAfter;
+
+        let total=0;
+
+        for(
+            let i=1;
+            i<=newMonths;
+            i++
+        ){
+
+            const interest=
+                balance*loan.r;
+
+            let installment=
+                newPayment;
+
+            let principalPart=
+                installment-interest;
+
+            if(
+                i===newMonths ||
+                principalPart>balance
+            ){
+
+                principalPart=
+                    balance;
+
+                installment=
+                    principalPart+interest;
+
+            }
+
+            balance=
+                Math.max(
+                    0,
+                    balance-principalPart
+                );
+
+            total+=installment;
+
+            schedule.push({
+
+                number:i,
+                payment:installment,
+                interest:interest,
+                principal:principalPart,
+                balance:balance
+
+            });
+
+        }
+
+        totalAfter=total;
+
+        interestAfter=
+            Math.max(
+                0,
+                totalAfter-balanceAfter
+            );
+
+    }
+
+    /* =========================
+       الفائدة المستقبلية الأصلية
+    ========================= */
+
+    const originalFuturePayments=
+        loan.payment*
+        remainingOriginalMonths;
+
+    const originalFutureInterest=
+        Math.max(
+            0,
+            originalFuturePayments-
+            balanceBefore
+        );
+
+    /* =========================
+       التوفير الحقيقي في الفائدة
+    ========================= */
+
+    const saving=
+        Math.max(
+            0,
+            originalFutureInterest-
+            interestAfter
+        );
+
+    /* =========================
+       صافي التوفير بعد العمولة
+    ========================= */
+
+    const netSaving=
+        Math.max(
+            0,
+            saving-commission
+        );
+
+    /* حفظ النتيجة */
+
+    partialLoan={
+
+        paid,
+        amount,
+        commissionRate,
+        commission,
+        netPartialAmount,
+        balanceBefore,
+        balanceAfter,
+        mode,
+        newPayment,
+        newMonths,
+        totalAfter,
+        interestAfter,
+        saving,
+        netSaving,
+        schedule
+
+    };
+
+    /* =========================
+       عرض النتائج
+    ========================= */
+
+    document.getElementById(
+        "partialBalanceBefore"
+    ).textContent=
+        fmt(balanceBefore);
+
+    document.getElementById(
+        "partialAmountResult"
+    ).textContent=
+        fmt(amount);
+
+    document.getElementById(
+        "partialCommissionResult"
+    ).textContent=
+        fmt(commission);
+
+    document.getElementById(
+        "partialNetAmountResult"
+    ).textContent=
+        fmt(netPartialAmount);
+
+    document.getElementById(
+        "partialBalanceAfter"
+    ).textContent=
+        fmt(balanceAfter);
+
+    document.getElementById(
+        "partialNewPayment"
+    ).textContent=
+        fmt(newPayment);
+
+    document.getElementById(
+        "partialNewMonths"
+    ).textContent=
+        newMonths.toLocaleString("en-US");
+
+    document.getElementById(
+        "partialTotalAfter"
+    ).textContent=
+        fmt(totalAfter);
+
+    document.getElementById(
+        "partialInterestAfter"
+    ).textContent=
+        fmt(interestAfter);
+
+    document.getElementById(
+        "partialSaving"
+    ).textContent=
+        fmt(saving);
+
+    document.getElementById(
+        "partialNetSaving"
+    ).textContent=
+        fmt(netSaving);
+
+    /* إنشاء جدول الأقساط */
+
+    buildPartialSchedule();
+
+    const scheduleButton=
+        document.getElementById(
+            "newPartialScheduleButton"
+        );
+
+    scheduleButton.disabled=false;
+    scheduleButton.style.opacity="1";
+
+    /* الانتقال إلى صفحة النتائج */
+
+    hideAll();
+
+    document.getElementById(
+        "partialResultsPage"
+    ).classList.remove("hidden");
+
+}
+
+/* =========================
+   بناء جدول الأقساط الجديدة
+========================= */
+
+function buildPartialSchedule(){
+
+    if(
+        !partialLoan.schedule ||
+        !partialLoan.schedule.length
+    ){
+
+        return;
+
+    }
+
+    let html=`
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>م</th>
+                    <th>القسط</th>
+                    <th>الفائدة</th>
+                    <th>أصل القرض</th>
+                    <th>الرصيد المتبقي</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+    `;
+
+    partialLoan.schedule.forEach(row=>{
+
+        html+=`
+
+            <tr>
+
+                <td>${row.number}</td>
+
+                <td>${fmt(row.payment)}</td>
+
+                <td>${fmt(row.interest)}</td>
+
+                <td>${fmt(row.principal)}</td>
+
+                <td>${fmt(row.balance)}</td>
+
+            </tr>
+
+        `;
+
+    });
+
+    html+=`
+
+            </tbody>
+
+        </table>
+
+    `;
+
+    document.getElementById(
+        "partialSchedule"
+    ).innerHTML=html;
+
+}
+
+/* =========================
+   جدول الأقساط الجديدة
+========================= */
+
+function showPartialSchedule(){
+
+    if(
+        !partialLoan.schedule ||
+        !partialLoan.schedule.length
+    ){
+
+        alert(
+            "احسب السداد الجزئي أولًا"
+        );
+
+        return;
+
+    }
+
+    hideAll();
+
+    document.getElementById(
+        "partialSchedulePage"
+    ).classList.remove("hidden");
+
+}
+
+/* =========================
+   منع التكبير بالإيماءة
+========================= */
+
+document.addEventListener(
+    "gesturestart",
+    function(e){
+        e.preventDefault();
+    }
+);
 
 </script>
 
